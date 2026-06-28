@@ -179,6 +179,16 @@
   .settings-wrap{max-width:560px;}
   .settings-section{margin-bottom:28px;}
   .settings-title{font-family:var(--serif);font-size:16px;font-weight:normal;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+
+  /* Logo */
+  .card-logo { width:32px;height:32px;border-radius:6px;object-fit:contain;border:1px solid var(--border);background:var(--bg);flex-shrink:0; }
+  .card-logo-fallback { width:32px;height:32px;border-radius:6px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--mono);color:var(--text2);flex-shrink:0; }
+  /* Price zone */
+  .zona-compra { font-size:12px;color:var(--text2);line-height:1.4;margin-top:2px; }
+  .zona-compra span { color:var(--text3); }
+  .price-in-zone { font-size:11px;padding:2px 8px;border-radius:20px;background:var(--green-bg);color:var(--green);font-weight:600; }
+  .price-out-zone { font-size:11px;padding:2px 8px;border-radius:20px;background:var(--bg2);color:var(--text3); }
+  .price-no-entry { font-size:11px;color:var(--text3); }
   @media(max-width:600px){
     .field-row{grid-template-columns:1fr;}
     .field-full{grid-column:span 1;}
@@ -297,6 +307,8 @@ function parseMd(raw) {
   // parse tags array
   if (meta.tags) meta.tags = meta.tags.split(',').map(t=>t.trim()).filter(Boolean);
   else meta.tags = [];
+  // parse numeric fields
+  if (meta.entrada_max) meta.entrada_max = parseFloat(meta.entrada_max);
   return { meta, body: m[2].trim() };
 }
 
@@ -314,15 +326,19 @@ async function loadAnalyses() {
     const text = await r.text();
     const { meta, body } = parseMd(text);
     return {
-      ticker:  (meta.ticker||f.name.replace('.md','')).toUpperCase(),
-      nombre:  meta.nombre || meta.ticker || '',
-      tipo:    meta.tipo || 'otro',
+      ticker:     (meta.ticker||f.name.replace('.md','')).toUpperCase(),
+      nombre:     meta.nombre || meta.ticker || '',
+      tipo:       meta.tipo || 'otro',
       valoracion: meta.valoracion || 'neutral',
-      resumen: meta.resumen || '',
-      tags:    meta.tags || [],
-      fecha:   meta.fecha || '',
+      resumen:    meta.resumen || '',
+      tags:       meta.tags || [],
+      fecha:      meta.fecha || '',
+      zona_compra: meta.zona_compra || '',
+      entrada_max: meta.entrada_max || null,
       body,
       filename: f.name,
+      logo: null,
+      currentPrice: null,
     };
   }));
 
@@ -361,12 +377,55 @@ async function saveLog() {
   logSha = data.content.sha;
 }
 
+
+// ── FINNHUB MARKET DATA ───────────────────────────────
+function getFinnhubKey() { return localStorage.getItem('atlas_finnhub_key') || ''; }
+function saveFinnhubKey(k) { localStorage.setItem('atlas_finnhub_key', k); }
+
+async function loadMarketData() {
+  const key = getFinnhubKey();
+  if (!key) return;
+  const FBASE = 'https://finnhub.io/api/v1';
+  await Promise.all(analyses.map(async a => {
+    try {
+      const [pRes, qRes] = await Promise.all([
+        fetch(`${FBASE}/stock/profile2?symbol=${a.ticker}&token=${key}`),
+        fetch(`${FBASE}/quote?symbol=${a.ticker}&token=${key}`)
+      ]);
+      const profile = await pRes.json();
+      const quote   = await qRes.json();
+      if (profile.logo) a.logo = profile.logo;
+      if (quote.c && quote.c > 0) a.currentPrice = quote.c;
+    } catch { /* keep null */ }
+  }));
+}
+
+function priceIndicatorHtml(a) {
+  const p = a.currentPrice;
+  if (!p) return '';
+  const pStr = `$${p.toFixed(2)}`;
+  if (a.entrada_max !== null && a.entrada_max > 0) {
+    const inZone = p <= a.entrada_max;
+    return inZone
+      ? `<span class="price-in-zone">✓ En zona · ${pStr}</span>`
+      : `<span class="price-out-zone">↑ ${pStr} · entrada &lt;= $${a.entrada_max.toFixed(2)}</span>`;
+  }
+  return `<span class="price-no-entry">${pStr}</span>`;
+}
+
+function logoHtml(a) {
+  const fb = `<div class="card-logo-fallback">${a.ticker.slice(0,2)}</div>`;
+  if (!a.logo) return fb;
+  return `<img class="card-logo" src="${esc(a.logo)}" alt="${esc(a.ticker)}" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','${fb.replace(/'/g,"\'")}')">`;
+}
+
 // ── INIT ──────────────────────────────────────────────
 async function init() {
   setNav(`<button onclick="goSettings()">⚙ Ajustes</button>`);
   setMain(`<div class="loading-row"><div class="spinner"></div><span>Cargando análisis desde GitHub…</span></div>`);
   try {
     await Promise.all([loadAnalyses(), loadLog()]);
+    await loadMarketData();
     goLib();
   } catch(e) {
     setMain(`
@@ -444,21 +503,31 @@ function grid(list) {
 }
 function cardHtml(a) {
   const logCount = (logData[a.ticker]||[]).length;
+  const priceHtml = priceIndicatorHtml(a);
   return `
     <div class="card card-clickable analysis-card" onclick="openDetail('${a.ticker}')">
-      <div class="card-top">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span class="ticker">${esc(a.ticker)}</span>
-          <span class="tag">${esc(TIPO_LABELS[a.tipo]||a.tipo)}</span>
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
+        ${logoHtml(a)}
+        <div style="flex:1;min-width:0;">
+          <div class="card-top" style="margin-bottom:3px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="ticker">${esc(a.ticker)}</span>
+              <span class="tag">${esc(TIPO_LABELS[a.tipo]||a.tipo)}</span>
+            </div>
+            ${pill(a.valoracion)}
+          </div>
+          <p class="name" style="margin:0;">${esc(a.nombre)}</p>
         </div>
-        ${pill(a.valoracion)}
       </div>
-      <p class="name">${esc(a.nombre)}</p>
       <p class="summary-text">${esc(a.resumen||'Sin resumen.')}</p>
-      <div class="card-bottom">
-        <span class="date">${a.fecha||''}</span>
-        <div style="display:flex;align-items:center;gap:6px;">
+      ${a.zona_compra ? `<p class="zona-compra"><span>Entrada: </span>${esc(a.zona_compra)}</p>` : ''}
+      <div class="card-bottom" style="margin-top:8px;">
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          ${priceHtml}
           ${logCount ? `<span class="tag">📋 ${logCount}</span>` : ''}
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span class="date">${a.fecha||''}</span>
           <div class="tags-row">${(a.tags||[]).slice(0,2).map(tagEl).join('')}</div>
         </div>
       </div>
@@ -720,6 +789,23 @@ function goSettings() {
       </div>
 
       <div class="settings-section">
+        <h2 class="settings-title">Finnhub — Precios en tiempo real</h2>
+        <div class="notice notice-blue" style="margin-bottom:14px;">
+          Necesaria para ver logos de empresas y precios de cotización en las tarjetas.<br>
+          Obtén una clave gratuita en <a href="https://finnhub.io" target="_blank">finnhub.io</a>.
+        </div>
+        <div class="field">
+          <label>API Key de Finnhub</label>
+          <input id="fh-input" type="password" placeholder="d7rhlh…" value="${esc(getFinnhubKey())}">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px;">
+          <button class="btn-primary" onclick="saveFHKey()">Guardar clave</button>
+          ${getFinnhubKey()?`<button class="btn-danger" onclick="clearFHKey()">Eliminar</button>`:''}
+        </div>
+        ${getFinnhubKey()?`<p style="font-size:12px;color:var(--green);margin-top:10px;">✓ Clave guardada</p>`:''}
+      </div>
+
+      <div class="settings-section">
         <h2 class="settings-title">Formato de análisis</h2>
         <p style="font-size:13px;color:var(--text2);margin-bottom:10px;">Cada fichero <code>.md</code> en <code>analyses/</code> debe incluir esta cabecera:</p>
         <pre style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;font-family:var(--mono);font-size:12px;line-height:1.7;overflow-x:auto;">---
@@ -744,6 +830,13 @@ function savePAT() {
   saveToken(v); toast('Token guardado ✓'); goSettings();
 }
 function clearPAT() { localStorage.removeItem('atlas_gh_pat'); toast('Token eliminado'); goSettings(); }
+function saveFHKey() {
+  const v=document.getElementById('fh-input')?.value.trim();
+  if (!v){toast('Introduce una API key.');return;}
+  saveFinnhubKey(v); toast('Clave Finnhub guardada ✓'); goSettings();
+}
+function clearFHKey() { localStorage.removeItem('atlas_finnhub_key'); toast('Clave eliminada'); goSettings(); }
+
 function promptToken() {
   showModal(`
     <p class="modal-title">Token requerido</p>

@@ -6,6 +6,8 @@ valoracion: seguimiento
 resumen: Empresa de dispositivos médicos especializados en terapias guiadas por imagen cerebral. Tesis basada en crecimiento de pipeline y posible expansión a oncología.
 tags: healthcare, small-cap, medical-devices, opciones
 fecha: 2026-04-10
+zona_compra: CSP <= $7.50 · precio acción objetivo < $6
+entrada_max: 7.50
 ---
 
 ## Resumen Ejecutivo
