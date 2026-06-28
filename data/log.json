@@ -1,1 +1,18 @@
-{}
+{
+  "CLPT": [
+    {
+      "id": "mqxt65d57of6",
+      "date": "2026-04-10",
+      "type": "trade",
+      "text": "",
+      "tradeType": "PUT",
+      "tradeAction": "open",
+      "strike": "7.50",
+      "expiry": "2026-07-17",
+      "premium": "1.05",
+      "contracts": "10",
+      "status": "open",
+      "statusComment": ""
+    }
+  ]
+}
