@@ -544,8 +544,10 @@ function cardHtml(a) {
         </div>
       </div>
       <div class="card-divider"></div>
-      <p class="summary-text" style="margin-bottom:8px;">${esc(a.resumen||'Sin resumen.')}</p>
-      ${a.zona_compra ? `<div class="zona-compra"><span class="zona-compra-label">Entrada</span>${esc(a.zona_compra)}</div>` : ''}
+      <div style="flex:1;">
+        <p class="summary-text" style="margin-bottom:8px;">${esc(a.resumen||'Sin resumen.')}</p>
+        ${a.zona_compra ? `<div class="zona-compra"><span class="zona-compra-label">Entrada</span>${esc(a.zona_compra)}</div>` : ''}
+      </div>
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:10px;">
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
           ${priceHtml}
