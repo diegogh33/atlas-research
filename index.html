@@ -529,17 +529,20 @@ function cardHtml(a) {
   const accentCls = 'card-accent-' + (a.valoracion || 'neutral');
   return `
     <div class="card card-clickable analysis-card ${accentCls}" onclick="openDetail('${a.ticker}')">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">
         ${logoHtml(a)}
         <div style="flex:1;min-width:0;overflow:hidden;">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;margin-bottom:2px;flex-wrap:nowrap;">
-            <div style="display:flex;align-items:center;gap:6px;min-width:0;flex-shrink:1;overflow:hidden;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;margin-bottom:3px;">
+            <div style="display:flex;align-items:center;gap:6px;min-width:0;overflow:hidden;">
               <span class="ticker" style="flex-shrink:0;">${esc(a.ticker)}</span>
               <span class="tag" style="flex-shrink:0;">${esc(TIPO_LABELS[a.tipo]||a.tipo)}</span>
             </div>
             <div style="flex-shrink:0;">${pill(a.valoracion)}</div>
           </div>
-          <p class="name" style="margin:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(a.nombre)}</p>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:6px;">
+            <p class="name" style="margin:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(a.nombre)}</p>
+            <span class="date" style="flex-shrink:0;">${a.fecha||''}</span>
+          </div>
         </div>
       </div>
       <div class="card-divider"></div>
@@ -547,12 +550,9 @@ function cardHtml(a) {
         <p class="summary-text" style="margin-bottom:8px;">${esc(a.resumen||'Sin resumen.')}</p>
         ${a.zona_compra ? `<div class="zona-compra"><span class="zona-compra-label">Entrada</span>${esc(a.zona_compra)}</div>` : ''}
       </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:10px;">
-        <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;">
-          <span class="date">${a.fecha||''}</span>
-          <div class="tags-row">${(a.tags||[]).slice(0,2).map(tagEl).join('')}</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:10px;">
+        <div class="tags-row">${(a.tags||[]).slice(0,2).map(tagEl).join('')}</div>
+        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
           ${priceHtml}
           ${logCount ? `<span style="font-size:11px;color:var(--text3);display:inline-flex;align-items:center;gap:3px;"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><line x1="3" y1="4" x2="9" y2="4" stroke="currentColor" stroke-width="1.1"/><line x1="3" y1="6.5" x2="9" y2="6.5" stroke="currentColor" stroke-width="1.1"/><line x1="3" y1="9" x2="6" y2="9" stroke="currentColor" stroke-width="1.1"/></svg>${logCount}</span>` : ''}
         </div>
