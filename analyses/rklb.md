@@ -3,7 +3,7 @@ ticker: RKLB
 nombre: Rocket Lab USA, Inc.
 tipo: growth
 valoracion: seguimiento
-resumen: La única empresa espacial end-to-end cotizada fuera de SpaceX, con liderazgo indiscutible en small launch (60-70% del mercado dedicado) y backlog de $1.850M. Negocio de calidad excepcional atrapado en una valoración sin margen de seguridad: 77x EV/Revenue LTM vs. valor intrínseco ponderado de ~$66. Entrada defensiva condicionada a <$46 y primer vuelo exitoso de Neutron.
+resumen: "La única empresa espacial end-to-end cotizada fuera de SpaceX, con liderazgo indiscutible en small launch (60-70% del mercado dedicado) y backlog de $1.850M. Negocio de calidad excepcional atrapado en una valoración sin margen de seguridad: 77x EV/Revenue LTM vs. valor intrínseco ponderado de ~$66. Entrada defensiva condicionada a <$46 y primer vuelo exitoso de Neutron."
 tags: space, defense, launch-services, growth, speculative, small-cap
 fecha: 2026-04-29
 zona_compra: <$46 (margen seguridad 30% sobre intrínseco ~$66) · compra clara base <$45

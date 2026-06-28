@@ -3,7 +3,7 @@ ticker: ARE
 nombre: Alexandria Real Estate Equities
 tipo: opciones
 valoracion: posicion
-resumen: REIT especializado en campus life science en ubicaciones irreproducibles (Kendall Square, Mission Bay, Torrey Pines). Posición activa: CSP Jan 2027 strike $42.50 · 5 contratos · prima media $6.32 · break-even $36.18 · capital neto en riesgo $18.079.
+resumen: "REIT especializado en campus life science en ubicaciones irreproducibles (Kendall Square, Mission Bay, Torrey Pines). Posición activa: CSP Jan 2027 strike $42.50 · 5 contratos · prima media $6.32 · break-even $36.18 · capital neto en riesgo $18.079."
 tags: reit, life-science, real-estate, opciones, biotech, dividend
 fecha: 2026-04-30
 zona_compra: CSP $42.50 · break-even $36.18 (−11.5% desde precio de entrada)

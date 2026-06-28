@@ -3,7 +3,7 @@ ticker: ABBV
 nombre: AbbVie Inc.
 tipo: accion
 valoracion: alcista
-resumen: Farmacéutica mega-cap con la transición de producto más exitosa del sector: Skyrizi + Rinvoq ($25.866M en 2025) superaron el pico de Humira con dos años de anticipación. FCF ~$18.000M/año, sin LOEs relevantes hasta 2033, dividendo del 3,45% con 52 años consecutivos de crecimiento (Dividend King) y visibilidad de crecimiento de dígito alto hasta 2029.
+resumen: "Farmacéutica mega-cap con la transición de producto más exitosa del sector: Skyrizi + Rinvoq ($25.866M en 2025) superaron el pico de Humira con dos años de anticipación. FCF ~$18.000M/año, sin LOEs relevantes hasta 2033, dividendo del 3,45% con 52 años consecutivos de crecimiento (Dividend King) y visibilidad de crecimiento de dígito alto hasta 2029."
 tags: healthcare, pharmaceutical, dividend-growth, dgi, immunology, wide-moat
 fecha: 2026-04-30
 zona_compra: ≤$200 · compra clara por debajo de $190 · revisión tesis >$220

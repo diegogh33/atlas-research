@@ -309,7 +309,8 @@ function parseMd(raw) {
     const ci = line.indexOf(':');
     if (ci < 0) return;
     const k = line.slice(0,ci).trim();
-    const v = line.slice(ci+1).trim();
+    let v = line.slice(ci+1).trim();
+    if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) v = v.slice(1,-1);
     meta[k] = v;
   });
   // parse tags array

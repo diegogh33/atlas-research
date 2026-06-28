@@ -3,7 +3,7 @@ ticker: NKE
 nombre: Nike, Inc.
 tipo: opciones
 valoracion: seguimiento
-resumen: La mayor empresa de calzado y ropa deportiva del mundo atraviesa su peor crisis de ejecución histórica bajo el mandato fallido de Donahoe (2020-2024). El CEO Elliott Hill (veterano de 30 años) ejecuta un turnaround real pero no completado. Wide moat intacto, balance sólido, 24 años de incrementos de dividendo. La CSP Jan'27 strike $38 es la estrategia correcta para este perfil de riesgo: cobrar por esperar con una marca icónica a precios de profundo descuento.
+resumen: "La mayor empresa de calzado y ropa deportiva del mundo atraviesa su peor crisis de ejecución histórica bajo el mandato fallido de Donahoe (2020-2024). El CEO Elliott Hill (veterano de 30 años) ejecuta un turnaround real pero no completado. Wide moat intacto, balance sólido, 24 años de incrementos de dividendo. La CSP Jan'27 strike $38 es la estrategia correcta para este perfil de riesgo: cobrar por esperar con una marca icónica a precios de profundo descuento."
 tags: consumer-discretionary, sportswear, dividend-growth, turnaround, wide-moat, opciones
 fecha: 2026-04-26
 zona_compra: CSP Jan'27 strike $38 (deep value entry) · acción directa solo <$35
