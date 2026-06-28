@@ -14,5 +14,35 @@
       "status": "open",
       "statusComment": ""
     }
+  ],
+  "ARE": [
+    {
+      "id": "mqy2b9b6jnpd",
+      "date": "2026-04-27",
+      "type": "trade",
+      "text": "",
+      "tradeType": "PUT",
+      "tradeAction": "open",
+      "strike": "42.50",
+      "expiry": "2027-01-15",
+      "premium": "4.98",
+      "contracts": "2",
+      "status": "open",
+      "statusComment": ""
+    },
+    {
+      "id": "mqy2bycvyi7s",
+      "date": "2026-04-30",
+      "type": "trade",
+      "text": "",
+      "tradeType": "PUT",
+      "tradeAction": "open",
+      "strike": "42.50",
+      "expiry": "2027-01-15",
+      "premium": "7.25",
+      "contracts": "3",
+      "status": "open",
+      "statusComment": ""
+    }
   ]
 }
