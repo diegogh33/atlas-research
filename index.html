@@ -531,15 +531,15 @@ function cardHtml(a) {
     <div class="card card-clickable analysis-card ${accentCls}" onclick="openDetail('${a.ticker}')">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
         ${logoHtml(a)}
-        <div style="flex:1;min-width:0;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
-            <div style="display:flex;align-items:center;gap:7px;">
-              <span class="ticker">${esc(a.ticker)}</span>
-              <span class="tag">${esc(TIPO_LABELS[a.tipo]||a.tipo)}</span>
+        <div style="flex:1;min-width:0;overflow:hidden;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;margin-bottom:2px;flex-wrap:nowrap;">
+            <div style="display:flex;align-items:center;gap:6px;min-width:0;flex-shrink:1;overflow:hidden;">
+              <span class="ticker" style="flex-shrink:0;">${esc(a.ticker)}</span>
+              <span class="tag" style="flex-shrink:0;">${esc(TIPO_LABELS[a.tipo]||a.tipo)}</span>
             </div>
-            ${pill(a.valoracion)}
+            <div style="flex-shrink:0;">${pill(a.valoracion)}</div>
           </div>
-          <p class="name" style="margin:0;font-size:13px;">${esc(a.nombre)}</p>
+          <p class="name" style="margin:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(a.nombre)}</p>
         </div>
       </div>
       <div class="card-divider"></div>

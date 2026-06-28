@@ -6,7 +6,7 @@ valoracion: alcista
 resumen: El mayor grupo de lujo del mundo con 6 divisiones, 75+ maisons y cuota del 25% del mercado global de lujo personal. Corrección cíclica ofrece FCF yield del 6,3% y PER de ~20x sobre BPA deprimido. Precio objetivo €620–700 en 3 años y €700–850 en 5 años. Veredicto INVERTIR.
 tags: luxury, consumer-discretionary, europe, wide-moat, dividend, dgi
 fecha: 2026-05-01
-logo_url: https://logo.clearbit.com/lvmh.com
+logo_url: https://s3-symbol-logo.tradingview.com/lvmh--600.png
 zona_compra: ≤€420 alta convicción · €421–€520 convicción moderada (nivel actual)
 entrada_max: 520.00
 ---
