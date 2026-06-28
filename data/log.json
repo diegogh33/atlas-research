@@ -14,5 +14,21 @@
       "status": "open",
       "statusComment": ""
     }
+  ],
+  "ARE": [
+    {
+      "id": "mqy2b9b6jnpd",
+      "date": "2026-04-27",
+      "type": "trade",
+      "text": "",
+      "tradeType": "PUT",
+      "tradeAction": "open",
+      "strike": "42.50",
+      "expiry": "2027-01-15",
+      "premium": "4.98",
+      "contracts": "2",
+      "status": "open",
+      "statusComment": ""
+    }
   ]
 }
