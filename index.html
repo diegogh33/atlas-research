@@ -181,14 +181,22 @@
   .settings-title{font-family:var(--serif);font-size:16px;font-weight:normal;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
 
   /* Logo */
-  .card-logo { width:32px;height:32px;border-radius:6px;object-fit:contain;border:1px solid var(--border);background:var(--bg);flex-shrink:0; }
-  .card-logo-fallback { width:32px;height:32px;border-radius:6px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--mono);color:var(--text2);flex-shrink:0; }
+  .card-logo { width:36px;height:36px;border-radius:8px;object-fit:contain;border:1px solid var(--border);background:var(--bg);flex-shrink:0; }
+  .card-logo-fallback { width:36px;height:36px;border-radius:8px;border:none;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:var(--mono);color:#fff;flex-shrink:0;letter-spacing:0.03em; }
   /* Price zone */
-  .zona-compra { font-size:12px;color:var(--text2);line-height:1.4;margin-top:2px; }
-  .zona-compra span { color:var(--text3); }
-  .price-in-zone { font-size:11px;padding:2px 8px;border-radius:20px;background:var(--green-bg);color:var(--green);font-weight:600; }
-  .price-out-zone { font-size:11px;padding:2px 8px;border-radius:20px;background:var(--bg2);color:var(--text3); }
-  .price-no-entry { font-size:11px;color:var(--text3); }
+  .zona-compra { font-size:12px;color:var(--text2);line-height:1.5;margin-top:4px;display:flex;align-items:baseline;gap:5px; }
+  .zona-compra-label { color:var(--text3);font-size:11px;flex-shrink:0; }
+  .price-in-zone { font-size:12px;padding:3px 10px;border-radius:20px;background:var(--green-bg);color:var(--green);font-weight:600;display:inline-flex;align-items:center;gap:4px; }
+  .price-out-zone { font-size:12px;padding:3px 10px;border-radius:20px;background:var(--bg2);color:var(--text3);display:inline-flex;align-items:center;gap:4px; }
+  .price-no-entry { font-size:11px;color:var(--text3);font-family:var(--mono); }
+  /* Card accent */
+  .card-accent-alcista    { border-top:3px solid var(--green); }
+  .card-accent-bajista    { border-top:3px solid var(--red); }
+  .card-accent-neutral    { border-top:3px solid var(--border2); }
+  .card-accent-posicion   { border-top:3px solid var(--amber); }
+  .card-accent-seguimiento{ border-top:3px solid var(--blue); }
+  /* Card divider */
+  .card-divider { height:1px;background:var(--border);margin:10px 0; }
   @media(max-width:600px){
     .field-row{grid-template-columns:1fr;}
     .field-full{grid-column:span 1;}
@@ -403,26 +411,35 @@ async function loadMarketData() {
 function priceIndicatorHtml(a) {
   const p = a.currentPrice;
   if (!p) return '';
-  const pStr = `$${p.toFixed(2)}`;
+  const pStr = '$' + p.toFixed(2);
   if (a.entrada_max !== null && a.entrada_max > 0) {
     const inZone = p <= a.entrada_max;
-    return inZone
-      ? `<span class="price-in-zone">✓ En zona · ${pStr}</span>`
-      : `<span class="price-out-zone">↑ ${pStr} · entrada &lt;= $${a.entrada_max.toFixed(2)}</span>`;
+    if (inZone) {
+      return '<span class="price-in-zone"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> En zona · ' + pStr + '</span>';
+    } else {
+      return '<span class="price-out-zone">' + pStr + ' · obj. $' + a.entrada_max.toFixed(2) + '</span>';
+    }
   }
-  return `<span class="price-no-entry">${pStr}</span>`;
+  return '<span class="price-no-entry">' + pStr + '</span>';
 }
 
-function logoFallback(img, initials) {
+const LOGO_COLORS = ['#2d6a4f','#1a4f8a','#6b3fa0','#8a3a2a','#3a6b8a','#5a6b2a','#8a5a10','#2a5a6b','#6b2a5a','#3a4f6b'];
+function tickerColor(ticker) { let h=0;for(const ch of ticker)h=(h*31+ch.charCodeAt(0))&0xfffffff;return LOGO_COLORS[h%LOGO_COLORS.length]; }
+function makeFallback(initials, ticker) {
   const d = document.createElement('div');
   d.className = 'card-logo-fallback';
   d.textContent = initials;
-  img.replaceWith(d);
+  d.style.background = tickerColor(ticker);
+  return d;
+}
+function logoFallback(img, initials, ticker) {
+  img.replaceWith(makeFallback(initials, ticker));
 }
 function logoHtml(a) {
   const initials = a.ticker.slice(0, 2);
-  if (!a.logo) return '<div class="card-logo-fallback">' + initials + '</div>';
-  return '<img class="card-logo" src="' + esc(a.logo) + '" alt="' + esc(a.ticker) + '" onerror="logoFallback(this,\'' + initials + '\')">'; 
+  const col = tickerColor(a.ticker);
+  if (!a.logo) return '<div class="card-logo-fallback" style="background:' + col + '">' + initials + '</div>';
+  return '<img class="card-logo" src="' + esc(a.logo) + '" alt="' + esc(a.ticker) + '" onerror="logoFallback(this,\'' + initials + '\',\'' + a.ticker + '\')">';
 }
 
 // ── INIT ──────────────────────────────────────────────
@@ -510,29 +527,31 @@ function grid(list) {
 function cardHtml(a) {
   const logCount = (logData[a.ticker]||[]).length;
   const priceHtml = priceIndicatorHtml(a);
+  const accentCls = 'card-accent-' + (a.valoracion || 'neutral');
   return `
-    <div class="card card-clickable analysis-card" onclick="openDetail('${a.ticker}')">
-      <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
+    <div class="card card-clickable analysis-card ${accentCls}" onclick="openDetail('${a.ticker}')">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
         ${logoHtml(a)}
         <div style="flex:1;min-width:0;">
-          <div class="card-top" style="margin-bottom:3px;">
-            <div style="display:flex;align-items:center;gap:8px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+            <div style="display:flex;align-items:center;gap:7px;">
               <span class="ticker">${esc(a.ticker)}</span>
               <span class="tag">${esc(TIPO_LABELS[a.tipo]||a.tipo)}</span>
             </div>
             ${pill(a.valoracion)}
           </div>
-          <p class="name" style="margin:0;">${esc(a.nombre)}</p>
+          <p class="name" style="margin:0;font-size:13px;">${esc(a.nombre)}</p>
         </div>
       </div>
-      <p class="summary-text">${esc(a.resumen||'Sin resumen.')}</p>
-      ${a.zona_compra ? `<p class="zona-compra"><span>Entrada: </span>${esc(a.zona_compra)}</p>` : ''}
-      <div class="card-bottom" style="margin-top:8px;">
+      <div class="card-divider"></div>
+      <p class="summary-text" style="margin-bottom:8px;">${esc(a.resumen||'Sin resumen.')}</p>
+      ${a.zona_compra ? `<div class="zona-compra"><span class="zona-compra-label">Entrada</span>${esc(a.zona_compra)}</div>` : ''}
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:10px;">
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
           ${priceHtml}
-          ${logCount ? `<span class="tag">📋 ${logCount}</span>` : ''}
+          ${logCount ? `<span style="font-size:11px;color:var(--text3);display:inline-flex;align-items:center;gap:3px;"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><line x1="3" y1="4" x2="9" y2="4" stroke="currentColor" stroke-width="1.1"/><line x1="3" y1="6.5" x2="9" y2="6.5" stroke="currentColor" stroke-width="1.1"/><line x1="3" y1="9" x2="6" y2="9" stroke="currentColor" stroke-width="1.1"/></svg>${logCount}</span>` : ''}
         </div>
-        <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;">
           <span class="date">${a.fecha||''}</span>
           <div class="tags-row">${(a.tags||[]).slice(0,2).map(tagEl).join('')}</div>
         </div>
