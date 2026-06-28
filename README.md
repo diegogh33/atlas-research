@@ -133,62 +133,97 @@ REGLAS DE EJECUCIÓN INQUEBRANTABLES:
 
 ## Exportar un análisis finalizado a ATLAS
 
-Una vez completado el análisis de las 10 secciones y obtenido el veredicto final, usa el siguiente prompt para generar el fichero Markdown listo para subir a `analyses/`:
+Una vez completadas las 10 secciones y obtenido el veredicto final, usa este prompt para generar el fichero `.md` listo para subir a `analyses/`.
+
+**Objetivo del fichero resultante:** debe ser una referencia primaria válida — suficientemente completa para consultar sin necesidad de volver a la conversación original en la mayoría de los casos. Si se necesita profundidad adicional, se vuelve a la conversación. **Longitud objetivo: 250–350 líneas de contenido real.**
 
 ```
-El análisis de [EMPRESA / TICKER] está completo. Necesito que generes el fichero Markdown para mi dashboard ATLAS.
+El análisis de [EMPRESA / TICKER] está completo. Necesito que generes el fichero Markdown
+para mi dashboard ATLAS.
 
-El fichero debe tener dos partes: el frontmatter YAML y el cuerpo del análisis.
+**PARTE 1 — FRONTMATTER YAML**
 
-**PARTE 1 — FRONTMATTER** (extrae estos campos del análisis que acabamos de completar):
+Extrae los siguientes campos del análisis que acabamos de completar:
 
 ---
 ticker: [TICKER EN MAYÚSCULAS]
 nombre: [Nombre completo de la empresa]
 tipo: [accion | cef | etf | growth | opciones | otro]
-valoracion: [Mapea el veredicto final así:
+valoracion: [Mapea el veredicto así:
              INVERTIR → alcista
              SEGUIMIENTO → seguimiento
              NO INVERTIR → bajista
-             Si hay posición activa abierta → posicion
-             Si el precio actual no está en zona pero la tesis es positiva → neutral]
-resumen: [Extrae del Resumen Ejecutivo de la sección x.A. Máximo 2 frases. Debe reflejar la tesis central y el veredicto. Sin jerga innecesaria.]
-tags: [3-5 tags en inglés: sector, características clave. Ej: technology, software, dividend-growth, moat, small-cap]
+             Posición activa abierta → posicion
+             Atractivo pero fuera de zona → neutral]
+resumen: [2 frases máximo. Extrae del Resumen Ejecutivo (sección x.A).
+          Debe incluir: qué hace la empresa, el dato financiero más relevante
+          y el veredicto. Sin jerga innecesaria.]
+tags: [3-5 tags en inglés: sector, características clave.
+       Ej: technology, software, dividend-growth, moat, small-cap]
 fecha: [Fecha de hoy en formato YYYY-MM-DD]
-zona_compra: [Extrae de la sección viii (Valoración). Redacta en texto libre el rango o condición de entrada. Ej: "<= $46 tramo 1 · <= $38 tramo 2", "Margen de seguridad >30% sobre valor intrínseco $X", "CSP strike $7.50". Si el veredicto es NO INVERTIR, escribe "No aplica".]
-entrada_max: [Extrae de la sección viii. El precio máximo numérico del tramo de entrada más conservador — es el número contra el que se compara la cotización en tiempo real. Si no hay precio de entrada definido o el veredicto es NO INVERTIR, escribe 0.]
+zona_compra: [Extrae de la sección viii. Texto libre con el rango o condición
+              de entrada. Ej: "≤$200 · compra clara <$190", "$65–$75",
+              "CSP strike $7.50 · break-even $36.18". Si es NO INVERTIR: "No aplica".]
+entrada_max: [Número decimal del precio máximo de entrada más conservador.
+              Se compara con la cotización en tiempo real para el indicador de la tarjeta.
+              Si no aplica: 0.]
 ---
 
 **PARTE 2 — CUERPO DEL ANÁLISIS EN MARKDOWN**
 
-Genera una versión condensada pero sustancial del análisis completo. El objetivo es que sea útil como referencia rápida, no que replique las 10 secciones íntegramente. Sigue esta estructura:
+Genera una versión sustancial del análisis. El objetivo es que sirva como referencia
+primaria sin necesidad de volver a esta conversación. Incluye todas las secciones
+siguientes con el nivel de detalle indicado:
 
 ## Resumen Ejecutivo
-[2-3 párrafos con la síntesis más importante: negocio, moat, situación financiera y veredicto.]
+[3-4 párrafos. Contexto histórico breve, situación actual con datos clave,
+catalizadores inmediatos y veredicto con precio de entrada.
+Si hay actualizaciones recientes de earnings, inclúyelas aquí.]
 
 ## Tesis de Inversión
-[Los argumentos centrales alcistas. Incluye los 3-5 puntos más relevantes de la tesis alcista de la sección x.B.1.]
+[6-8 puntos numerados completos, no bullets de una línea. Cada punto debe
+argumentar por qué este factor importa y qué implica para el valor terminal.]
 
 ## Negocio y Ventaja Competitiva
-[Síntesis de secciones i y ii: descripción del negocio, modelo de ingresos y fuentes del moat. Prioriza lo diferencial.]
+[Descripción del negocio con tabla de segmentos/productos e ingresos.
+Análisis del moat con sus fuentes específicas (no genéricas) y rating de durabilidad.
+Scuttlebutt si es relevante. Geografía de ingresos si es relevante.]
 
 ## Directiva y Asignación de Capital
-[Síntesis de sección iii: puntos clave sobre el equipo directivo, skin in the game y track record de asignación de capital.]
+[Perfil del CEO y equipo clave con contexto real (no solo nombre y cargo).
+Tabla de historial de capital allocation con rating por categoría.
+Alineación ejecutiva y cultura si hay datos de Glassdoor u otras fuentes.]
 
 ## Métricas Financieras Clave
-[De la sección vii, incluye las tablas más relevantes: evolución de ingresos, márgenes, FCF y métricas de rentabilidad (ROE, ROIC). Mantén el formato de tabla Markdown.]
+[Tablas de la sección vii: cuenta de resultados simplificada (10 años donde
+disponible, mínimo 5), FCF evolution, márgenes, métricas de rentabilidad
+(ROIC vs WACC), solvencia. KPIs operativos clave del sector.
+Mantén el formato de tabla Markdown. No omitas los CAGR.]
 
 ## Valoración
-[De la sección viii, incluye: rango de valoración intrínseca, múltiplos actuales vs. históricos (tabla resumen de las 5 métricas) y el DCF en sus escenarios base y conservador.]
+[Tabla de múltiplos históricos (valor actual vs. medias 3A, 5A, 10A).
+Tabla comparativa de peers. Tabla de rango de valoración intrínseca con
+todos los métodos usados (DCF escenarios, múltiplos, SOTP, consenso).
+Análisis de sensibilidad DCF si es material.]
+
+## Pipeline / Catalizadores próximos
+[Solo si aplica: farma, tech en transición, etc. Tabla de activos con fase
+y fecha de catalizador esperada.]
 
 ## Riesgos Principales
-[Los 3-5 riesgos más críticos de la sección v, con su factor mitigante si lo hay.]
+[Tabla con 6-9 riesgos: descripción, severidad (semáforo), mitigante específico.
+No listas genéricas — riesgos propios de esta empresa en este momento.]
 
 ## Escenarios de Estrés
-[Resumen de la sección ix: los escenarios adversos y a qué precio sería una compra clara en el peor caso.]
+[2-3 escenarios con tabla de impacto en métricas clave y precio en estrés.
+Incluye la tabla resumen con probabilidades y precio de "compra clara".]
 
 ## Conclusión y Veredicto
-[Veredicto final con su razonamiento. Incluye el pre-mortem en 2-3 líneas. Cierra con la balanza alcista/bajista y la recomendación.]
+[Síntesis de la ponderación alcista/bajista con argumento central.
+Pre-mortem completo (3-5 líneas mínimo).
+Tabla de parámetros del veredicto (precio entrada, horizonte, posición).
+Lista de señales de alerta para revisión de tesis.
+Tabla de KPIs de monitorización trimestral si la empresa lo requiere.]
 ```
 
 ---
@@ -199,8 +234,9 @@ Genera una versión condensada pero sustancial del análisis completo. El objeti
 |-------|-------------------|
 | `tipo` | `accion` · `cef` · `etf` · `growth` · `opciones` · `otro` |
 | `valoracion` | `alcista` · `bajista` · `neutral` · `posicion` · `seguimiento` |
-| `zona_compra` | Texto libre. Ej: `"<= $46"`, `"$34-38 tramo 1 · <= $30 tramo 2"`, `"CSP strike $7.50"` |
-| `entrada_max` | Número decimal. Se compara con la cotización en tiempo real para el indicador de la tarjeta. |
+| `zona_compra` | Texto libre. Ej: `"≤$200 · compra clara <$190"`, `"$65–$75"`, `"CSP strike $7.50"` |
+| `entrada_max` | Número decimal. Se compara con cotización en tiempo real. |
+| `logo_url` | URL directa a imagen del logo (opcional; usar para valores europeos no cubiertos por Finnhub) |
 
 ---
 
