@@ -345,7 +345,7 @@ async function loadAnalyses() {
       entrada_max: meta.entrada_max || null,
       body,
       filename: f.name,
-      logo: null,
+      logo: meta.logo_url || null,
       currentPrice: null,
     };
   }));
@@ -397,12 +397,11 @@ async function loadMarketData() {
   await Promise.all(analyses.map(async a => {
     try {
       const [pRes, qRes] = await Promise.all([
-        fetch(`${FBASE}/stock/profile2?symbol=${a.ticker}&token=${key}`),
+        a.logo ? Promise.resolve(null) : fetch(`${FBASE}/stock/profile2?symbol=${a.ticker}&token=${key}`),
         fetch(`${FBASE}/quote?symbol=${a.ticker}&token=${key}`)
       ]);
-      const profile = await pRes.json();
-      const quote   = await qRes.json();
-      if (profile.logo) a.logo = profile.logo;
+      if (pRes) { const profile = await pRes.json(); if (profile.logo) a.logo = profile.logo; }
+      const quote = await qRes.json();
       if (quote.c && quote.c > 0) a.currentPrice = quote.c;
     } catch { /* keep null */ }
   }));
