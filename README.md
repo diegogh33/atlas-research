@@ -250,3 +250,203 @@ Tabla de KPIs de monitorización trimestral si la empresa lo requiere.]
 ## URL de la app
 
 `https://diegogh33.github.io/atlas-research/`
+
+---
+
+## Prompts de seguimiento
+
+### Prompt 1 — Análisis post-resultados
+
+Usar cada vez que una empresa de la cartera o en seguimiento publica earnings.
+
+```
+Empresa: [NOMBRE] ([TICKER])
+¿Está en ATLAS? [Sí / No]
+
+Antes de responder, busca activamente los últimos resultados publicados por esta
+empresa: fecha exacta, trimestre o período que cubren, press release de IR,
+filing SEC (8-K o 6-K), y si está disponible, el transcript de la earnings call.
+
+Si la empresa está en ATLAS, resúmeme brevemente la tesis previa (3-4 líneas):
+tesis central, veredicto, precio de entrada y los 2-3 riesgos principales
+identificados. Si no está en ATLAS, omite este apartado.
+
+Luego analiza los resultados estructurando tu respuesta así:
+
+**1. Resultados vs. consenso**
+Tabla con: Ingresos, EPS ajustado, EBITDA/FCF, y las 2-3 métricas operativas
+clave del sector (ARR, RPO, renovaciones, etc.). Para cada métrica: valor real,
+consenso y variación. Beat/miss/in-line con valoración cualitativa.
+
+**2. Guidance**
+Guidance dado para el próximo trimestre y/o año completo vs. consenso previo.
+Si revisaron guidance: en qué dirección y por cuánto.
+
+**3. Aspectos relevantes de la call**
+Comentarios de la dirección que cambien el cuadro: nuevos productos, M&A,
+cambios regulatorios, comentarios sobre demanda o macro. Solo lo que sea
+materialmente nuevo respecto al análisis previo.
+
+**4. Reacción del mercado**
+Movimiento en pre-market y en sesión. Volumen relativo vs. media. Si la reacción
+te parece justificada o excesiva respecto a los fundamentales, y por qué.
+
+**5. Impacto sobre la tesis**
+- ¿Los resultados refuerzan, debilitan o son neutrales para la tesis?
+- ¿Algún número o comentario obliga a revisar supuestos del modelo?
+- ¿Cambia el valor intrínseco o el escenario base? Si es así, cuantifica el cambio.
+- ¿Alguna señal de alerta de las identificadas previamente se ha activado?
+
+**6. Convicción y acción recomendada**
+Convicción actual: Alta / Media / Baja — y dirección: subiendo / manteniendo / bajando.
+Recomendación concreta: mantener, añadir, reducir, o esperar siguiente catalizador.
+¿Habría que actualizar la zona de entrada o el precio objetivo?
+
+**7. Recomendación para ATLAS** ← Solo si está en ATLAS
+Dos opciones según la magnitud del cambio:
+- Cambio menor (resultados confirman tesis, novedades sin impacto estructural):
+  → Entrada en el log. Indica: tipo (Decisión / Nota), texto sugerido (2-3 líneas).
+- Cambio significativo (cambia veredicto, zona de entrada, precio objetivo,
+  o el .md actual daría una imagen incorrecta de la empresa hoy):
+  → Reemplazar el .md en ATLAS. Indica qué secciones habría que actualizar
+  y los datos clave que cambiarían. El historial queda preservado en Git.
+
+Sé crítico y cuantitativo. Señala tanto los puntos fuertes como las banderas rojas.
+Si algo es especialmente importante, explícalo con claridad aunque implique más espacio.
+```
+
+---
+
+### Prompt 2 — Actualización y seguimiento
+
+Usar para mantenerse al día sin esperar a los earnings: noticias, movimientos estratégicos,
+cambios de analistas, catalizadores inminentes.
+
+```
+Empresa: [NOMBRE] ([TICKER])
+¿Está en ATLAS? [Sí / No]
+
+Primero, indícame la fecha de la última información que tengas indexada sobre
+esta empresa, para que sepa desde qué punto parte la actualización.
+
+Busca activamente: noticias de los últimos 60 días, novedades del sector,
+cambios regulatorios, movimientos de insiders (Form 4 si es empresa americana),
+cambios en ratings de analistas, y cualquier declaración pública relevante
+de la dirección.
+
+Estructura la respuesta así:
+
+**1. Los 4-5 puntos más importantes**
+Solo lo que sea materialmente nuevo y relevante para la tesis. Sin ruido.
+Para cada punto: qué ocurrió, cuándo, y cómo impacta la tesis (positivo /
+negativo / neutral, con argumento).
+
+**2. Cambios en el mapa de riesgos**
+¿Se ha materializado algún riesgo identificado previamente?
+¿Ha aparecido algún riesgo nuevo?
+¿Se ha diluido algún riesgo previo?
+
+**3. Catalizadores próximos**
+Próximos earnings (fecha estimada), eventos del sector, decisiones regulatorias,
+lanzamientos de producto, o cualquier fecha relevante en los próximos 60-90 días.
+
+**4. Valoración actual**
+Precio actual, múltiplos actuales (P/E, EV/FCF o equivalente), y si el precio
+de entrada sigue siendo atractivo o ha cambiado la ecuación riesgo/recompensa.
+
+**5. Recomendación para ATLAS** ← Solo si está en ATLAS
+¿La información nueva justifica actualizar el .md o es suficiente con una entrada
+en el log?
+- Si es una actualización menor → entrada en el log (tipo + comentario sugerido).
+- Si es un cambio de calado (veredicto, zona de entrada, riesgos estructurales) →
+  reemplazar el .md. Indica qué secciones cambiarían. El historial queda en Git.
+Si no está en ATLAS pero los resultados son relevantes, indica si valdría la pena
+añadirla a la biblioteca con el prompt de exportación.
+
+Sé conciso pero sustancioso. Prioriza lo que cambia el cuadro sobre lo que lo confirma.
+```
+
+---
+
+### Prompt 3 — Evaluación rápida de nuevo candidato
+
+Usar antes de decidir si un valor merece análisis completo. Evita invertir horas
+en una tesis que un escrutinio inicial descartaría.
+
+```
+Quiero evaluar si [NOMBRE] ([TICKER]) merece un análisis completo de inversión.
+
+Haz una evaluación rápida — no una tesis completa — siguiendo este esquema:
+
+**1. El negocio en 5 líneas**
+Qué hace, cómo gana dinero, dónde opera. Sin historia corporativa.
+
+**2. ¿Existe un foso competitivo?**
+Sí / No / Dudoso — con el argumento en 3-4 líneas. Si no hay foso claro,
+es suficiente para descartar en muchos casos.
+
+**3. Números que importan**
+Tabla con: ingresos últimos 3 años + CAGR, margen FCF, deuda neta/EBITDA,
+ROIC vs. WACC estimado. Solo los que estén disponibles.
+
+**4. Valoración de referencia**
+FCF yield actual, PER forward vs. media histórica si disponible,
+y si el precio actual parece caro / razonable / barato a primera vista.
+
+**5. Riesgos principales**
+Los 3 riesgos más importantes. Uno línea cada uno.
+
+**6. Veredicto preliminar**
+Una de estas tres opciones con argumento:
+- ANALIZAR EN PROFUNDIDAD: hay tesis plausible y valoración potencialmente atractiva
+- SEGUIMIENTO: interesante pero esperar mejor precio o catalizador
+- DESCARTAR: el foso no existe, los números no acompañan o hay riesgo estructural
+
+Si el veredicto es ANALIZAR, sugiere cuál sería el precio de entrada preliminar
+y el horizonte de inversión mínimo recomendado.
+
+Sé directo. Si algo es claramente un no, dilo sin rodeos.
+```
+
+---
+
+### Prompt 4 — Comparación entre candidatos
+
+Usar cuando tienes capital disponible y dudas entre dos o tres opciones ya conocidas.
+
+```
+Tengo capital disponible para una nueva posición y estoy decidiendo entre los
+siguientes candidatos: [EMPRESA A] ([TICKER A]) y [EMPRESA B] ([TICKER B]).
+[Añadir EMPRESA C si aplica.]
+
+Tengo análisis previos de ambas. Antes de proceder, resume en 2 líneas
+la tesis y el precio de entrada de cada una.
+
+Haz una comparación directa estructurada así:
+
+**1. Perfil riesgo/recompensa**
+Para cada candidato: upside estimado al caso base, downside en el escenario adverso
+plausible, y FCF yield actual. Tabla comparativa.
+
+**2. Calidad del negocio**
+Foso competitivo, recurrencia de ingresos y visibilidad: ¿cuál es mejor negocio
+estructuralmente? Sé directo — no des empate si no lo hay.
+
+**3. Valoración relativa**
+¿Cuál está más barato en términos absolutos? ¿Y ajustado por calidad y crecimiento?
+
+**4. Catalizadores próximos**
+¿Cuál tiene más catalizadores a corto plazo (3-6 meses)? ¿Y a largo plazo (3+ años)?
+
+**5. Correlación con el resto de la cartera**
+¿Alguno de los dos añade diversificación real o se solapa con posiciones existentes?
+[Descripción breve de la cartera si es relevante: ej. "cartera orientada a DGI
+con posiciones en [sectores]."]
+
+**6. Recomendación**
+Cuál elegirías y por qué. Si ambos son válidos, cuál primero y bajo qué condiciones
+añadirías el segundo. No des respuesta ambigua — compromete una dirección.
+
+Sé objetivo y dispuesto a recomendar el candidato menos obvio si los números
+lo justifican.
+```
