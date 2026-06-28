@@ -413,10 +413,16 @@ function priceIndicatorHtml(a) {
   return `<span class="price-no-entry">${pStr}</span>`;
 }
 
+function logoFallback(img, initials) {
+  const d = document.createElement('div');
+  d.className = 'card-logo-fallback';
+  d.textContent = initials;
+  img.replaceWith(d);
+}
 function logoHtml(a) {
-  const fb = `<div class="card-logo-fallback">${a.ticker.slice(0,2)}</div>`;
-  if (!a.logo) return fb;
-  return `<img class="card-logo" src="${esc(a.logo)}" alt="${esc(a.ticker)}" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','${fb.replace(/'/g,"\'")}')">`;
+  const initials = a.ticker.slice(0, 2);
+  if (!a.logo) return '<div class="card-logo-fallback">' + initials + '</div>';
+  return '<img class="card-logo" src="' + esc(a.logo) + '" alt="' + esc(a.ticker) + '" onerror="logoFallback(this,\'' + initials + '\')">'; 
 }
 
 // ── INIT ──────────────────────────────────────────────
