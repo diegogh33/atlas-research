@@ -1,13 +1,13 @@
 ---
-ticker: PNG.V
+ticker: KRKNF
 nombre: Kraken Robotics Inc.
 tipo: growth
 valoracion: seguimiento
-resumen: "Empresa canadiense líder en robótica submarina de defensa: baterías SeaPower certificadas sole-source para la US Navy y SAS/KATFISH para cartografía submarina OTAN. La adquisición de Covelya (615 M CAD, mar. 2026) transforma el foso de estrecho a amplio pero eleva el riesgo de ejecución a riesgo dominante. Precio actual sin margen de seguridad a 8,51 CAD."
+resumen: "Empresa canadiense líder en robótica submarina de defensa: baterías SeaPower certificadas sole-source para la US Navy y SAS/KATFISH para cartografía submarina OTAN. La adquisición de Covelya (615 M CAD, mar. 2026) transforma el foso de estrecho a amplio pero eleva el riesgo de ejecución a riesgo dominante. Cotiza en OTC (USD) como KRKNF. Financieros en CAD."
 tags: defense, subsea, robotics, canada, small-cap, speculative
 fecha: 2026-04-16
-zona_compra: "5,50–7,00 CAD posición base post-Covelya · máxima convicción <4,00 CAD"
-entrada_max: 7.00
+zona_compra: "$4.00–$5.10 USD posición base post-Covelya (5,50–7,00 CAD) · máxima convicción <$2.90 USD (<4,00 CAD)"
+entrada_max: 5.10
 ---
 
 ## Resumen Ejecutivo
@@ -22,7 +22,7 @@ En abril de 2026, la acción cotiza a 8,51 CAD. El DCF standalone da un valor de
 
 **Veredicto: SEGUIMIENTO.** Negocio excepcional; precio incorrecto. Entrada de alta convicción post-Covelya: 5,50–7,00 CAD. Máxima convicción: <4,00 CAD.
 
-*Nota operativa: operar siempre por PNG.V en TSX-V (mejor liquidez y spread). Usar KRKNF (OTC) solo si no hay acceso directo a mercados canadienses. Siempre con órdenes limitadas.*
+*Nota operativa: cotiza en OTC americano como KRKNF (USD). Los precios y zonas de entrada del análisis original están en CAD; la conversión aproximada es ×0,73 (CAD→USD). Usar siempre órdenes limitadas — el spread en KRKNF puede ser amplio. Para mayor liquidez, también cotiza en TSX-V como PNG.V.*
 
 ## Tesis de Inversión
 
