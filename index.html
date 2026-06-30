@@ -211,9 +211,9 @@
 <div id="app">
   <header>
     <a class="logo" onclick="goLib()" href="javascript:void(0)">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <polygon points="11,2 20,8 20,20 2,20 2,8" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-        <rect x="7.5" y="13" width="7" height="7" fill="currentColor" rx="0.5"/>
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <polygon points="16,5 27,13 27,27 5,27 5,13" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <rect x="11.5" y="18.5" width="9" height="8.5" fill="#e0aa4a" rx="0.8"/>
       </svg>
       <span class="logo-name">ATLAS</span>
       <span class="logo-sub">Investment Research</span>
@@ -347,6 +347,7 @@ async function loadAnalyses() {
       body,
       filename: f.name,
       logo: meta.logo_url || null,
+      priceTicker: meta.price_ticker || null,
       currentPrice: null,
     };
   }));
@@ -397,9 +398,10 @@ async function loadMarketData() {
   const FBASE = 'https://finnhub.io/api/v1';
   await Promise.all(analyses.map(async a => {
     try {
+      const priceSymbol = a.priceTicker || a.ticker;
       const [pRes, qRes] = await Promise.all([
         a.logo ? Promise.resolve(null) : fetch(`${FBASE}/stock/profile2?symbol=${a.ticker}&token=${key}`),
-        fetch(`${FBASE}/quote?symbol=${a.ticker}&token=${key}`)
+        fetch(`${FBASE}/quote?symbol=${priceSymbol}&token=${key}`)
       ]);
       if (pRes) { const profile = await pRes.json(); if (profile.logo) a.logo = profile.logo; }
       const quote = await qRes.json();
