@@ -1,211 +1,221 @@
-# ITW — Illinois Tool Works Inc.
-**Tesis de Inversión Institucional | Socio Senior**
-**Fecha de análisis:** Junio 2026 | **Precio de referencia:** ~250-280 USD/acción
-**Veredicto:** `SEGUIMIENTO — Entrada Condicional 165–190 USD (convicción plena 140–165 USD)`
-
+---
+ticker: ITW
+nombre: Illinois Tool Works Inc.
+tipo: accion
+valoracion: seguimiento
+resumen: "Conglomerado industrial centenario con el moat operativo mejor documentado del sector (sistema 80/20, ROIC ~29%, margen operativo 10pp por encima del peer group). Balance muy conservador (Deuda/EBITDA 1,9x) y Dividend King de 63 años. Pero el crecimiento orgánico 4%+ prometido por el 'Next Phase' lleva una década sin materializarse, y el precio actual (~$250-280) ya lo da por hecho: DCF arroja $172-194 frente a un mercado que paga 26x beneficios. Calidad excepcional, precio de entrada sin margen de seguridad."
+tags: industrials, dividend-growth, dgi, dividend-king, wide-moat, diversified-industrial
+fecha: 2026-06-30
+zona_compra: ≤$190 · entrada parcial 165-190 · convicción plena <$165
+entrada_max: 190.00
 ---
 
-## DATOS DE MERCADO
+## Resumen Ejecutivo
 
-| Parámetro | Valor |
-|---|---|
-| Ticker | NYSE: ITW |
-| Sede | Glenview, Illinois |
-| Fundación | 1912 |
-| Capitalización de mercado | ~78.000M USD |
-| Acciones en circulación | 288,2M |
-| Ingresos FY2025 | 16.044M USD |
-| Empleados | ~43.000 (88 divisiones, 49 países) |
-| Deuda total / EBITDA | 1,9x |
-| Dividend yield actual | ~2,4-2,6% |
-| Racha de incrementos de dividendo | 63 años consecutivos (Dividend King) |
-| Segmentos | 7 (Automotive OEM, Food Equipment, T&M+Electronics, Welding, Polymers & Fluids, Construction Products, Specialty Products) |
+Illinois Tool Works fue fundada en Chicago en 1912 y se transformó radicalmente a partir de 2012 bajo presión de un inversor activista: la "Enterprise Strategy" redujo el portfolio de ~800 unidades de negocio dispersas a 88 divisiones de alta calidad organizadas en siete segmentos diversificados (Automotive OEM, Food Equipment, Test & Measurement and Electronics, Welding, Polymers & Fluids, Construction Products, Specialty Products), ninguno superando el 20% de los ingresos.
 
----
+El resultado de esa transformación es verificable y excepcional: el margen operativo pasó del 15,9% al 26,8% y el ROIC después de impuestos se duplicó del 14,5% al 31,2% entre 2012 y 2024, generando un TSR del 449% frente al 433% del peer group y al 415% del S&P 500. El núcleo de esa ventaja es el sistema propietario **80/20 Front-to-Back**, una disciplina de 45 años que concentra recursos en el 20% de clientes/productos más rentables — un foso de capital organizativo tácito, no un activo replicable.
 
-## I. DESCRIPCIÓN DEL NEGOCIO
+El CEO actual, Christopher O'Herlihy (desde enero 2024), lleva 35 años en la casa. El balance es muy conservador (Deuda/EBITDA 1,9x, cobertura de intereses >15x) y la compañía es Dividend King con 63 años consecutivos de incremento.
 
-**Origen:** fundada en Chicago en 1912 por el financiero Byron L. Smith para fabricar herramientas de corte de engranajes de precisión. Sobrevivió rentable cada año de la Gran Depresión. Tras décadas de crecimiento vía adquisición (32 operaciones en una década duplicaron su tamaño a $1.500M; ~100 adquisiciones adicionales en los años 90), la compañía se transformó radicalmente desde 2012 bajo presión de un inversor activista: la "Enterprise Strategy" redujo el portfolio de ~800 unidades de negocio dispersas a 88 divisiones escaladas y de alta calidad.
+**El problema de esta tesis no es de calidad de negocio, es de precio.** La nueva fase estratégica ("Next Phase" 2024-2030) promete un crecimiento orgánico del 4%+ que en la práctica lleva sin materializarse casi una década — el dato más reciente (Q1 2026) muestra crecimiento orgánico de solo +0,4%. Un DCF construido con los propios supuestos optimistas de la directiva arroja $172-194/acción, muy por debajo del precio de mercado actual (~$250-280).
 
-**Los siete segmentos (ingresos FY2025, % del total):**
+**Veredicto: SEGUIMIENTO.** Negocio de calidad excepcional sin margen de seguridad al precio actual. Entrada parcial en $165-190; convicción plena por debajo de $165.
 
-| Segmento | Ingresos 2025 | % del Grupo | Margen Operativo aprox. |
+## Tesis de Inversión
+
+1. **El moat del 80/20 es real, verificable y se sigue ensanchando.** Spread ROIC-WACC de ~20-21 puntos porcentuales sostenido durante más de una década. Margen operativo del 27% frente al 17% medio del peer group (Honeywell, Emerson, Parker-Hannifin, Dover, etc.) — la prueba cuantitativa más sólida de un foso estructural, no cíclico.
+2. **Diversificación genuina que reduce el riesgo de ruina.** Siete segmentos, ninguno superando el 20% de ingresos, exposición geográfica equilibrada (>50% fuera de EE.UU.), y huella de fabricación local-para-local (>90% de producción en mercados de venta) que confiere resiliencia estructural frente a aranceles.
+3. **Historial de asignación de capital impecable durante seis décadas.** 63 años de incrementos de dividendo ininterrumpidos incluso en 2009 y 2020. Recompras sostenidas, M&A marginal y selectivo (nunca transformacional ni dilutivo).
+4. **Balance que ha demostrado resiliencia real bajo estrés agudo.** En el peor trimestre de su historia reciente (COVID Q2 2020: ingresos orgánicos -27%, margen operativo cayendo a 17,5%), el FCF se mantuvo positivo y robusto (213% del beneficio neto) — prueba empírica, no teórica, de la elasticidad de costes del modelo 80/20.
+5. **Pero el crecimiento orgánico 4%+ prometido lleva una década sin materializarse.** ITW no ha sostenido crecimiento orgánico del 3%+ desde hace casi diez años. El patrón se repite en el dato más reciente (Q1 2026: +0,4% orgánico, varios segmentos en declive) — y el precio actual ya paga como si el patrón fuera a romperse esta vez.
+6. **Valoración sin margen de seguridad.** PER en línea con el peer group (25,8x vs. 25,9x medio) a pesar del ROIC muy superior; EV/FCF en expansión rápida (26,9x en 2023 → 32,1x en 2025); contracción del patrimonio neto contable (-4,7% CAGR 10A) por recompras sostenidas, en parte a valoraciones elevadas.
+
+## Negocio y Ventaja Competitiva
+
+**Segmentos y mix de ingresos (FY2025):**
+
+| Segmento | Ingresos 2025 (M$) | % Total | Margen Operativo aprox. |
 |---|---|---|---|
-| Automotive OEM | 3.288M | 20% | 21% |
-| Test & Measurement and Electronics | 2.825M | 18% | ~25% |
-| Food Equipment | 2.699M | 17% | 28% |
-| Welding | 1.890M | 12% | 33% |
-| Specialty Products | 1.775M | 11% | ~31% |
-| Construction Products | 1.820M | 11% | ~30% |
-| Polymers & Fluids | 1.765M | 11% | 28% |
+| Automotive OEM | 3.288 | 20% | 21% |
+| Test & Measurement and Electronics | 2.825 | 18% | ~25% |
+| Food Equipment | 2.699 | 17% | 28% |
+| Welding | 1.890 | 12% | 33% |
+| Specialty Products | 1.775 | 11% | ~31% |
+| Construction Products | 1.820 | 11% | ~30% |
+| Polymers & Fluids | 1.765 | 11% | 28% |
 
-Ningún segmento supera el 20% de ingresos: diversificación genuina entre ciclos de automoción, alimentación, electrónica, energía y construcción. Más del 50% de las ventas proceden de fuera de EE.UU., con Asia-Pacífico (especialmente China) mostrando crecimiento orgánico sólido (+6,3% en 2025) frente a debilidad en Norteamérica y Europa.
+Más del 50% de las ventas proceden de fuera de EE.UU. Asia-Pacífico (especialmente China) creció un +6,3% orgánico en 2025 frente a debilidad en Norteamérica (-0,7%) y Europa (-2,2%).
 
-**Tamaño de mercado:** ITW no persigue un TAM único masivo; opera deliberadamente en mercados fragmentados de nicho donde puede ser líder claro de cuota (15%-25% según segmento), evitando mercados commoditizados de gran volumen.
+**Moat: tres pilares.**
 
----
+**1. Sistema 80/20 Front-to-Back.** Nacido en 1980 como respuesta a presión de márgenes por competencia japonesa. Identifica el 20% de clientes/productos que genera el 80% de ingresos y beneficios, concentra recursos ahí y elimina complejidad del resto. Refinado durante 45 años — capital organizativo tácito extremadamente difícil de replicar.
 
-## II. MODELO DE NEGOCIO Y FOSO COMPETITIVO
+**2. Marcas de nicho con fidelidad genuina de cliente.** Hobart (Food Equipment), Miller (Welding), Instron/MTS (Test & Measurement), Rain-X/Permatex (Polymers & Fluids), Paslode (Construction). Scuttlebutt en foros profesionales de soldadura confirma lealtad casi tribal hacia Miller frente a Lincoln Electric, citando fiabilidad y soporte postventa.
 
-**El sistema 80/20 Front-to-Back** es el foso central y el activo más valioso de la compañía. Nacido en 1980 como respuesta a presión de márgenes por competencia japonesa, identifica el 20% de clientes/productos que genera el 80% de ingresos y beneficios, concentrando recursos ahí y eliminando complejidad del resto. No es recorte de costes puntual: es un sistema perpetuo, refinado durante 45 años, que constituye capital organizativo tácito extremadamente difícil de replicar por competidores.
+**3. Fabricación local-para-local.** Más del 90% de la producción ocurre en los mercados donde se vende, confiriendo resiliencia arancelaria estructural y pricing power verificado durante el shock de aranceles de 2025.
 
-**Evidencia cuantitativa del moat:**
-- ROIC duplicado del 14% (2012) al ~29-31% (2024-2025)
-- Margen operativo del 27% vs. 17% de media del peer group (Honeywell, Emerson, Parker-Hannifin, Dover, etc.)
-- Spread ROIC-WACC estimado de ~20-21 puntos porcentuales sostenido durante más de una década
+**Durabilidad del foso:** el moat de eficiencia está maduro y sobradamente probado (ROIC duplicado desde 2012). El moat de crecimiento —la apuesta del "Next Phase"— es la frontera donde la tesis todavía debe demostrarse; el track record de la última década no es favorable.
 
-**Pricing power verificado:** con más del 90% de la producción en los mercados donde se vende, ITW recupera el coste de aranceles vía precio sin perder volumen significativo — ventaja estructural frente a competidores con fabricación centralizada en Asia.
+**Scuttlebutt de cultura (Glassdoor, ~1.560 reseñas):** 3,8-3,9/5, 71% recomendaría trabajar allí. Patrón de "buena media, alta varianza por división", coherente con el modelo descentralizado. Riesgo a vigilar: tensión entre el valor declarado "Shared Risk" y testimonios de evaluación de "talento B" percibida como punitiva en divisiones bajo reestructuración — relevante porque el éxito del Next Phase depende de retener ese mismo talento medio.
 
-**Scuttlebutt de producto (Miller Welding, marca insignia):** foros profesionales de soldadores —colectivo poco influenciable por marketing— muestran lealtad de marca casi tribal hacia Miller frente a Lincoln Electric, citando fiabilidad, acabado y soporte postventa superior.
+## Directiva y Asignación de Capital
 
-**Scuttlebutt de cultura (Glassdoor, ~1.560 reseñas):** valoración de 3,8-3,9/5, 71% recomendaría trabajar allí. Patrón de "buena media, alta varianza por división" coherente con el modelo descentralizado: algunas unidades de bajo rendimiento muestran clima laboral deficiente, sin reflejar problema sistémico. Riesgo a vigilar: tensión entre el valor declarado "Shared Risk" y testimonios de evaluación de "talento B" percibida como punitiva en divisiones bajo reestructuración.
+**Christopher A. O'Herlihy (CEO desde enero 2024):** 35 años en ITW, con responsabilidad de P&L previa en Food Equipment y Polymers & Fluids. Ascenso interno — continuidad cultural deliberada, no fichaje externo.
 
-**Durabilidad del foso:** el moat de eficiencia está maduro y bien probado. El moat de crecimiento (cuota ganada vía innovación) es la frontera donde la tesis todavía debe demostrarse.
+**E. Scott Santi (Presidente No Ejecutivo, CEO 2012-2024):** arquitecto de la Enterprise Strategy, permanece como supervisor estratégico. Ha vendido 167.345 acciones (~$48,7M) en los últimos 6 meses sin compras — dato a registrar, no necesariamente alarmante, pero proviene de quien mejor conoce el ritmo real de ejecución.
 
----
+**Michael M. Larsen (CFO desde 2013):** continuidad financiera desde el inicio de la transformación de 2012.
 
-## III. DIRECTIVA Y CULTURA EMPRESARIAL
+| Palanca | Rating | Detalle |
+|---|---|---|
+| Dividendos | ⭐⭐⭐⭐⭐ | 63 años consecutivos (Dividend King); $6,44/acción anualizado |
+| Disciplina de margen/ROIC | ⭐⭐⭐⭐⭐ | ROIC 14,5%→31,2% (2012-2024); margen operativo 15,9%→26,8% |
+| Recompras | ⭐⭐⭐ | Sostenidas pero posiblemente a valoraciones elevadas en años recientes (EV/FCF +5pp en 2 años) |
+| Adquisiciones | ⭐⭐⭐⭐ | Disciplinadas, marginales, nunca transformacionales — bajo riesgo de M&A dilutivo |
+| Ejecución del crecimiento orgánico | ⭐⭐ | Objetivo 4%+ incumplido de forma sostenida desde hace una década |
 
-**Christopher A. O'Herlihy (CEO desde enero 2024):** 35 años en ITW, con responsabilidad de P&L previa en Food Equipment y Polymers & Fluids antes de asumir el cargo. Ascenso interno, no fichaje externo — continuidad cultural deliberada.
+**Alineación ejecutiva:** retribución del CEO ponderada hacia rendimiento (50% opciones, sin RSUs de vesting temporal). El EIP 2024 pagó solo el 56,5% del objetivo por crecimiento orgánico plano — evidencia de que el sistema penaliza el incumplimiento. Say-on-pay >93% tres años consecutivos. Estructura organizativa deliberadamente ligera: solo 4 ejecutivos reportan al CEO, sin COO corporativo.
 
-**E. Scott Santi (Presidente No Ejecutivo, CEO 2012-2024):** arquitecto de la Enterprise Strategy. Permanece como supervisor estratégico tras la transición.
+**Base accionarial:** 84% institucional. Vanguard (9,2%) y **Briar Hall Management — familia Smith fundadora (8,9%)**, señal poco habitual de alineación generacional genuina en una compañía de 114 años cotizada. State Farm Insurance (7,5%) como tercer mayor accionista.
 
-**Michael M. Larsen (CFO desde 2013):** continuidad financiera desde el inicio de la transformación.
+## Métricas Financieras Clave
 
-**Estructura organizativa:** solo 4 ejecutivos reportan directamente al CEO; sin COO a nivel corporativo. Prueba estructural de que la descentralización es arquitectura real, no discurso de relaciones con inversores.
+### Cuenta de resultados (M$)
 
-**Alineación con el accionista:** retribución del CEO ponderada hacia rendimiento (50% opciones, sin RSUs de vesting temporal), con el EIP 2024 pagando solo el 56,5% del objetivo por crecimiento orgánico plano — evidencia de que el sistema penaliza el incumplimiento. Say-on-pay >93% tres años consecutivos.
+| Partida | 2015 | 2017 | 2019 | 2021 | 2023 | 2024 | 2025 | CAGR 10A |
+|---|---|---|---|---|---|---|---|---|
+| Ingresos | 13.405 | 14.314 | 14.109 | 14.455 | 16.107 | 15.898 | 16.044 | +1,8% |
+| Beneficio bruto | 5.517 | 6.008 | 5.922 | 5.966 | 6.791 | 7.040 | 7.075 | +2,5% |
+| EBITDA | 3.344 | 3.947 | 3.828 | 3.887 | 4.435 | 4.666 | 4.613 | +3,3% |
+| Beneficio neto | 1.899 | 1.687 | 2.521 | 2.694 | 2.957 | 3.488 | 3.066 | +4,9% |
 
-**Track record de asignación de capital (2012-2024):** margen operativo 15,9%→26,8%, ROIC 14,5%→31,2%, TSR del 449% (vs. 433% peer group, vs. 415% S&P 500). Dividend King con 63 años de incrementos consecutivos. M&A marginal y selectivo (adquisiciones de $57-120M), nunca transformacional.
+*Nota: 2017 distorsionado por el impacto puntual de la reforma fiscal TCJA en el beneficio neto.*
 
-**Insider selling reciente:** E. Scott Santi vendió 167.345 acciones (~$48,7M) en los últimos 6 meses sin compras — dato a registrar, no necesariamente alarmante, pero proviene de quien mejor conoce el ritmo real de ejecución del "Next Phase".
+### Balance — el rasgo distintivo (M$)
 
----
+| Partida | 2015 | 2020 | 2023 | 2024 | 2025 | CAGR 10A |
+|---|---|---|---|---|---|---|
+| Activos totales | 15.729 | 15.612 | 15.518 | 15.067 | 16.148 | +0,3% |
+| Patrimonio neto | 5.228 | 3.182 | 3.013 | 3.317 | 3.226 | **-4,7%** |
+| Deuda a largo plazo | 6.896 | 7.772 | 6.339 | 6.308 | 6.683 | -0,3% |
 
-## IV. ESTRATEGIA Y PERSPECTIVAS DE FUTURO
+El patrimonio neto se ha contraído un -4,7% CAGR a 10 años mientras los activos totales se mantenían planos — firma contable de una década de recompras agresivas financiadas con caja y deuda moderada. No indica deterioro operativo (el ROIC mejoró en el mismo periodo), pero sí una estructura de balance deliberadamente apalancada.
 
-**"Next Phase" (2024-2030):** segunda fase estratégica tras una década de optimización de eficiencia. Objetivo: crecimiento orgánico de alta calidad del **4%+ a través del ciclo**, impulsado por Customer-Back Innovation (CBI), con margen operativo objetivo del **30%** logrado vía apalancamiento operativo (incrementales del 35%+) más que recortes de coste adicionales.
+### Flujo de caja libre (M$)
 
-**Métrica de seguimiento (CBI Yield):** 2% en 2024 (más del doble de niveles pre-COVID), objetivo 3%+ para 2030. Repunte del 18% en presentación de patentes en 2024 como indicador adelantado verificable.
+| Año | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|
+| FCO | 2.557 | 2.348 | 3.539 | 3.281 | 3.126 |
+| FCF | 2.261 | 1.936 | 3.084 | 2.844 | 2.707 |
+| Dividendos pagados | 1.463 | 1.542 | 1.615 | 1.695 | 1.785 |
+| Recompras | 1.000 | 1.750 | 1.500 | 1.500 | 1.500 |
 
-**Resultado real 2025:** crecimiento orgánico **plano** — muy por debajo del objetivo estructural. Q1 2026: crecimiento orgánico de solo 0,4%, con varios segmentos en declive.
+### Márgenes y solvencia
 
-**M&A/desinversiones:** disciplina de portfolio mantenida; sin señales de adquisiciones transformacionales. Crecimiento futuro predominantemente orgánico y autofinanciado por diseño estratégico.
+| Métrica | 2015 | 2020 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|
+| Margen bruto | 41,2% | 41,3% | 42,2% | 44,3% | 44,1% |
+| Margen EBITDA | 24,9% | 26,3% | 27,5% | 29,3% | 28,8% |
+| Margen neto | 14,2% | 16,8% | 18,4% | 21,9% | 19,1% |
+| Deuda/EBITDA | — | — | 1,8x | 1,7x | 1,9x |
+| Cobertura intereses | — | — | — | — | ~15,8x |
 
-**Riesgo de ejecución:** la propia compañía vincula el éxito del Next Phase a la capacidad de retener talento de calidad en 88 divisiones — exactamente el punto de fricción cultural ya identificado en la Sección II.
+I+D 2025: $302M (+3,4% YoY). CapEx 2025: $419M (-4,1% YoY) — modelo relativamente "asset-light" para un industrial.
 
----
+## Valoración
 
-## V. RIESGOS CLAVE Y FACTORES MITIGANTES
+### Múltiplos históricos (PER, serie verificada)
 
-| Riesgo | Factor Mitigante |
+| Métrica | Valor Actual | Media 3A | Media 5A | Media 10A |
+|---|---|---|---|---|
+| PER | 25,8x | 23,1x | 23,5x | 22,0x |
+| EV/FCF | 32,1x (2025) | 29,1x | n/d (serie corta) | n/d |
+| EV/EBIT | 20,6x (2025) | 20,0x | n/d | n/d |
+| FCF Yield | 3,4% | 3,8% | 3,5% | n/d |
+| Dividend Yield | 2,4-2,6% | ~2,2% (est.) | ~2,2% (est.) | ~2,0% (est.) |
+
+### Comparativa peers (PER actual)
+
+| Empresa | PER | Margen Operativo |
+|---|---|---|
+| Parker-Hannifin (PH) | 33,4x | — |
+| Graco (GGG) | 29,7x | — |
+| Watts Water Technologies (WTS) | 28,6x | — |
+| Ingersoll Rand (IR) | 26,4x | — |
+| Nordson (NDSN) | 26,1x | — |
+| **ITW** | **25,8x** | **26-27%** |
+| IDEX (IEX) | 25,3x | — |
+| Dover (DOV) | 22,6x | — |
+| Regal Rexnord (RRX) | 21,6x | — |
+| Otis Worldwide (OTIS) | 19,7x | — |
+| **Media del grupo (excl. ITW)** | **25,9x** | **~17%** |
+
+ITW cotiza en línea con su peer group a pesar de un margen operativo ~10pp superior — el mercado no está reconociendo plenamente la prima de calidad.
+
+### DCF y rango de valoración intrínseca
+
+| Metodología | Valor ($/acción) |
 |---|---|
-| Debilidad **estructural** (no solo cíclica) en Construction Products: -5,4% CAGR 2A, 3 años consecutivos de contracción, mercado de vivienda residencial deprimido hasta bien entrado 2026 | Segmento de menor peso (11%), mantiene margen del 31,6% a pesar de la caída de volumen |
-| Aranceles EE.UU. 2025 (hasta 50% en acero/aluminio) | >90% de producción local-para-local; histórico de repercutir coste vía precio |
-| Competencia de bajo coste (particularmente china) en nichos fragmentados | Estrategia deliberada de retirada hacia nichos de alto valor añadido desde 2012 |
-| Exposición a divisas (mayor concentración de ventas extranjeras en Europa) | Deuda emitida parcialmente en euros como cobertura natural |
-| Riesgo de pensiones de prestación definida | Balance conservador (Deuda/EBITDA 1,9x) proporciona colchón |
-| Litigio fiscal histórico (2018, resuelto a favor de ITW) | Sin litigios materiales activos reportados a fecha de este análisis |
-| Posible asignación subóptima de capital: recompras en máximos de valoración | Cobertura de intereses >15x; flexibilidad financiera amplia |
+| DCF conservador (FCF +2,0%/2,5%, WACC 8%) | $143 |
+| **DCF caso base (FCF +4,0%/4,5%, alineado con Next Phase)** | **$172** |
+| DCF optimista (FCF +6,0%/5,0%) | $194 |
+| Múltiplos peer group (25,9x × BPA ~$10,49) | ~$272 |
+| PER medio histórico 10A (22,0x × BPA 2025) | ~$231 |
+| **Rango valor intrínseco (ponderado, mayor peso al DCF)** | **$180–$230** |
 
-**Sin litigios materiales reportables. Sin incidentes de ciberseguridad material en 2023-2025.** Exposición residual a Rusia inmaterial (~0,15% de ingresos).
+Divergencia material y sostenida frente al precio de mercado (~$245-280): el precio actual parece descontar una ejecución del Next Phase mejor que cualquier periodo reciente de la historia de la compañía.
 
----
+## Riesgos Principales
 
-## VI. OTROS ASPECTOS RELEVANTES
+| # | Riesgo | Severidad | Mitigante |
+|---|---|---|---|
+| 1 | Crecimiento orgánico 4%+ no se materializa (patrón de una década) | 🔴 Alto | Negocio sigue siendo rentable y generador de caja aunque el crecimiento decepcione; no hay riesgo de solvencia |
+| 2 | Debilidad estructural en Construction Products (-5,4% CAGR 2A, 3 años de contracción) | 🟡 Medio | Solo 11% de ingresos; mantiene margen del 31,6% pese a la caída de volumen |
+| 3 | Aranceles EE.UU. (hasta 50% en acero/aluminio) | 🟡 Medio | >90% producción local-para-local; histórico de repercutir coste vía precio |
+| 4 | Asignación de capital subóptima: recompras en máximos de valoración | 🟡 Medio | Cobertura de intereses >15x; flexibilidad financiera amplia para corregir el rumbo |
+| 5 | Competencia de bajo coste (china) en nichos fragmentados | 🟢 Bajo | Retirada deliberada hacia nichos de alto valor añadido desde 2012 |
+| 6 | Riesgo de pensiones de prestación definida / divisa (concentración ventas en Europa) | 🟢 Bajo | Balance conservador; deuda parcialmente emitida en euros como cobertura natural |
 
-**Base accionarial:** 84% institucional, sin accionista de control. Vanguard (9,16%) y **Briar Hall Management — familia Smith fundadora (8,91%)**, una señal poco habitual de alineación generacional genuina en una compañía de 114 años cotizada. State Farm Insurance (7,52%) como tercer mayor accionista, perfil típico de tenedor de muy largo plazo. Ausencia de presión activista relevante: el activismo de 2012 ya catalizó la transformación que hizo innecesaria nueva intervención externa.
+Sin litigios materiales reportables. Sin incidentes de ciberseguridad material en 2023-2025. Exposición residual a Rusia inmaterial (~0,15% de ingresos).
 
----
+## Escenarios de Estrés
 
-## VII. ANÁLISIS DE ESTADOS FINANCIEROS (2015-2025)
+Calibración empírica con el shock real más severo de la historia reciente: COVID Q2 2020 — ingresos orgánicos -27%, margen operativo cayendo de 24,1% a 17,5%, pero **FCF se mantuvo positivo y robusto** (213% del beneficio neto).
 
-| Métrica (M USD) | 2015 | 2020 | 2023 | 2024 | 2025 | CAGR 5A | CAGR 10A |
-|---|---|---|---|---|---|---|---|
-| Ingresos | 13.405 | 12.574 | 16.107 | 15.898 | 16.044 | 5,0% | 1,8% |
-| Beneficio bruto | 5.517 | 5.199 | 6.791 | 7.040 | 7.075 | 6,4% | 2,5% |
-| EBITDA | 3.344 | 3.309 | 4.435 | 4.666 | 4.613 | 6,9% | 3,3% |
-| Beneficio neto | 1.899 | 2.109 | 2.957 | 3.488 | 3.066 | 7,8% | 4,9% |
-| Patrimonio neto | 5.228 | 3.182 | 3.013 | 3.317 | 3.226 | 0,3% | **-4,7%** |
-| Deuda LP | 6.896 | 7.772 | 6.339 | 6.308 | 6.683 | -3,0% | -0,3% |
+| Escenario | Valor estresado | Compra clara a |
+|---|---|---|
+| A — Recesión global sincronizada | ~$101 | <$95 |
+| B — Erosión estructural de margen (competencia bajo coste) | ~$91 | <$85 |
+| **C — Fracaso del "Next Phase" (crecimiento orgánico nunca despega)** | **~$110** | **<$105** |
 
-**Márgenes:** bruto 41,2%→44,1%; EBITDA 24,9%→28,8%; neto 14,2%→19,1% (todos en expansión sostenida desde 2015).
+*El escenario C es el más plausible de los tres: no requiere shock externo, es la extrapolación directa de un patrón ya observado durante más de una década (Q1 2026: +0,4% orgánico).*
 
-**Solvencia:** Deuda total/EBITDA 1,9x (2025); cobertura de intereses ~15,8x — perfil crediticio muy conservador.
+**Suelo de compra con margen en cualquier escenario adverso: ~$140-165.**
 
-**Rasgo distintivo del balance:** el patrimonio neto se ha contraído un -4,7% CAGR a 10 años mientras los activos totales se mantenían planos — firma contable de una década de recompras agresivas financiadas con caja y deuda moderada, no señal de deterioro operativo (el ROIC mejoró en el mismo periodo).
+## Conclusión y Veredicto
 
-**Flujo de caja (2021-2025):** FCF entre 1.936M (2022) y 3.084M (2023); dividendos + recompras consumiendo entre el 100% y el 170% del FCF anual según el ejercicio.
+### 🔍 SEGUIMIENTO
 
-**I+D/CapEx 2025:** $302M en I+D (+3,4% YoY); $419M en CapEx (-4,1% YoY) — modelo relativamente "asset-light" para un industrial, crecimiento financiado más vía innovación que expansión de capacidad.
+**Síntesis:** la calidad del negocio subyacente no está en duda — moat real y verificado cuantitativamente, balance conservador, directiva alineada y disciplinada. El problema es exclusivamente de **precio de entrada**. El mercado paga hoy un múltiplo (PER 25,8x, en línea con el peer group) que asume implícitamente que el "Next Phase" funcionará esta vez, cuando el track record de la última década apunta sistemáticamente en sentido contrario.
 
----
+**Pre-Mortem (2035):** el fracaso más probable no sería dramático sino lento y silencioso. El CBI Yield se estanca en 2-2,5%, el crecimiento orgánico sigue oscilando 0-2% año tras año (idéntico al patrón 2012-2025), y el múltiplo de mercado se comprime gradualmente de 26x hacia 16-18x conforme el mercado revisa expectativas — sin ningún evento traumático, solo la erosión de una narrativa de crecimiento que el precio de 2026 ya daba por garantizada.
 
-## VIII. VALORACIÓN
-
-### DCF (10 años, WACC 8%, g terminal 2,5%)
-
-| Escenario | Valor/acción |
+| Parámetro | Detalle |
 |---|---|
-| Conservador (FCF +2,0%/2,5%) | ~143 USD |
-| Base (alineado con objetivo Next Phase) | ~172 USD |
-| Optimista (FCF +6,0%/5,0%) | ~194 USD |
+| Veredicto | **SEGUIMIENTO** |
+| Entrada parcial inicial | $165-190 |
+| Convicción plena | <$165 |
+| Revisión de tesis (al alza) | 3+ trimestres consecutivos de crecimiento orgánico ≥3% |
+| Horizonte mínimo | 10 años |
+| Posición sugerida (si se activa entrada) | 2-4% de cartera (core DGI defensivo) |
 
-### Múltiplos comparables
+### KPIs de monitorización trimestral
 
-PER actual de ITW: **25,8x**, prácticamente en línea con la media del peer group industrial de calidad (25,9x: Parker-Hannifin, Graco, Watts Water, Ingersoll Rand, Nordson, IDEX, Dover, Otis, Regal Rexnord) — sin prima ni descuento relativo evidente, a pesar del ROIC superior de ITW.
-
-**Evolución histórica PER (verificado 2015-2024):** rango 14,4x-28,8x; media 10A ≈ 22,0x. PER actual con prima ~17% sobre la media histórica.
-
-**EV/FCF:** ha pasado de 26,9x (2023) a 32,1x (2025) — el precio se ha movido más rápido que la generación de caja libre en los últimos dos ejercicios. FCF Yield comprimido del 4,1% (2023) al 3,4% (2025).
-
-### Rango de valoración intrínseca
-
-**$180-230/acción**, ponderando DCF (mayor peso, por su naturaleza más conservadora) y múltiplos comparables. **Divergencia material y sostenida frente al precio de mercado** ($245-280), que parece descontar una ejecución del Next Phase mejor que cualquier periodo reciente de la historia de la compañía.
-
----
-
-## IX. ANÁLISIS DE ESCENARIOS Y STRESS TESTING
-
-**Calibración empírica (shocks reales):** COVID Q2 2020 — ingresos -29% (orgánico -27%), margen operativo cayendo de 24,1% a 17,5%, pero **FCF se mantuvo positivo y robusto** (213% del beneficio neto) gracias al ajuste rápido de costes variables del 80/20.
-
-| Escenario de estrés | Valor/acción bajo estrés |
-|---|---|
-| 1. Recesión global sincronizada | ~101 USD |
-| 2. Erosión estructural de margen (competencia bajo coste) | ~91 USD |
-| 3. Fracaso del "Next Phase" (crecimiento orgánico nunca despega) | ~110 USD |
-
-**El escenario más plausible de los tres es el 3:** no requiere shock externo, es la simple extrapolación de un patrón documentado durante más de una década — ITW no ha sostenido crecimiento orgánico del 3%+ desde hace casi diez años, y el dato más reciente (Q1 2026: +0,4% orgánico) confirma la continuidad del patrón.
-
-**Precio de compra clara incluso en el peor escenario plausible:** $140-165/acción (margen de seguridad del 30-40% sobre el rango de valor intrínseco).
-
----
-
-## X. CONCLUSIÓN Y VEREDICTO
-
-### Tesis Alcista
-Moat del 80/20 real y verificable (spread ROIC-WACC ~20pp sostenido); diversificación genuina entre 7 segmentos sin concentración; huella de fabricación local-para-local con resiliencia arancelaria estructural; historial de asignación de capital impecable (Dividend King 63 años); balance muy conservador (Deuda/EBITDA 1,9x) que demostró resiliencia real en el shock COVID.
-
-### Tesis Bajista
-El crecimiento orgánico del 4%+ prometido lleva **una década sin materializarse** de forma sostenida, y el precio actual (PER en línea con peer group, ~26x) ya está pagando como si esta vez sí fuera a cumplirse. Divergencia material DCF vs. precio de mercado ($172-194 vs. $245-280). Contracción del patrimonio neto (-4,7% CAGR 10A) y EV/FCF en expansión (26,9x→32,1x en dos años) sugieren que el precio se ha adelantado a la caja generada. Debilidad estructural en Construction Products sin signos claros de inflexión.
-
-### Ejercicio Pre-Mortem (2035)
-El fracaso más probable no sería dramático sino lento y silencioso: el CBI Yield se estanca en 2-2,5%, el crecimiento orgánico sigue oscilando 0-2% año tras año (idéntico al patrón 2012-2025), y el múltiplo de mercado se comprime gradualmente de 26x hacia 16-18x conforme el mercado revisa expectativas — sin ningún evento traumático, solo la erosión de una narrativa de crecimiento que el precio de 2026 ya daba por garantizada.
-
-### Veredicto Final
-
-# 🔍 SEGUIMIENTO
-
-**Rango de entrada inicial (parcial):** $165-190/acción
-**Convicción plena (posición completa):** $140-165/acción
-**Catalizadores a vigilar:**
-1. Tres o más trimestres consecutivos de crecimiento orgánico ≥3% (señal de inflexión real del Next Phase)
-2. CBI Yield superando el 2,5%-3% de forma sostenida
-3. Corrección de mercado hacia el rango de entrada por causas macro/sectoriales, no por deterioro del moat
-4. Próximos informes trimestrales — el dato de crecimiento orgánico es la variable de mayor peso informativo para esta tesis
-
-**Nota operativa:** la calidad del negocio subyacente no está en duda; el problema es exclusivamente de precio de entrada y margen de seguridad frente a un patrón de incumplimiento de objetivos de crecimiento orgánico ya documentado y verificado durante más de una década.
-
----
-
-*Análisis elaborado siguiendo protocolo institucional de 10 secciones (Senior Investment Partner). Fuentes: SEC 10-K/10-Q/DEF 14A FY2023-2025, transcripciones de resultados, Macrotrends, StockAnalysis.com, Glassdoor, foros profesionales sectoriales.*
+| Métrica | Umbral confianza | Señal de alerta |
+|---|---|---|
+| Crecimiento orgánico YoY | ≥3% sostenido | <1% dos trimestres consecutivos |
+| CBI Yield | >2,5% | Estancado en ~2% |
+| Margen operativo | >27% | <25% sin explicación cíclica |
+| Deuda/EBITDA | <2,0x | >2,5x |
+| EV/FCF | <28x (entrada atractiva) | >32x (sobrevaloración persistente) |
