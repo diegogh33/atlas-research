@@ -240,13 +240,22 @@
       <span class="logo-sub">Investment Research</span>
     </a>
     <div style="display:flex;align-items:center;gap:8px;flex:1;justify-content:flex-end;">
-      <button class="seg-hdr-btn" onclick="openSeguimiento()" title="Ver Excel de seguimiento">
+      <button class="seg-hdr-btn" onclick="openExcelViewer('seguimiento')" title="Ver Excel de seguimiento">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="1" y="1" width="14" height="14" rx="2"/>
           <line x1="1" y1="5.5" x2="15" y2="5.5"/>
           <line x1="5.5" y1="5.5" x2="5.5" y2="15"/>
         </svg>
         Seguimiento
+      </button>
+      <button class="seg-hdr-btn" onclick="openExcelViewer('diario')" title="Ver Diario de Operaciones">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="1" width="14" height="14" rx="2"/>
+          <line x1="4" y1="5" x2="12" y2="5"/>
+          <line x1="4" y1="8" x2="12" y2="8"/>
+          <line x1="4" y1="11" x2="9" y2="11"/>
+        </svg>
+        Diario
       </button>
       <div id="header-nav" style="display:flex;align-items:center;gap:8px;"></div>
     </div>
@@ -259,7 +268,7 @@
 <div id="seg-overlay">
   <div id="seg-topbar">
     <button class="seg-icon-btn" onclick="closeSeguimiento()">← Volver</button>
-    <span class="seg-title">Seguimiento de Inversiones</span>
+    <span id="seg-title" class="seg-title">Seguimiento de Inversiones</span>
     <span id="seg-updated" class="seg-updated"></span>
     <button class="seg-icon-btn" onclick="reloadExcel()" title="Recargar del repositorio">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
@@ -976,45 +985,77 @@ function saveInlinePAT() {
   saveToken(v); removeModal(); toast('Token guardado. Intenta de nuevo.');
 }
 
-// ── SEGUIMIENTO ──────────────────────────────────────
-const SEG_REPO = 'diegogh33/premium-selling';
-const SEG_FILE = 'seguimiento%20inversiones/Seguimiento_Inversiones_v2_0_2026.xlsm';
+// ── EXCEL VIEWER (Seguimiento + Diario) ──────────────────────
+const EXCEL_FILES = {
+  seguimiento: {
+    title: 'Seguimiento de Inversiones',
+    repo:  'diegogh33/premium-selling',
+    file:  'seguimiento%20inversiones/Seguimiento_Inversiones_v2_0_2026.xlsm'
+  },
+  diario: {
+    title: 'Diario de Operaciones',
+    repo:  'diegogh33/premium-selling',
+    file:  'diario/Diario_Operaciones_v3.xlsx'
+  }
+};
+window._excelCache  = {};
+window._currentExcel = null;
+window._segWb       = null;  // active workbook
 
 function getSegPAT() {
   return localStorage.getItem('atlas_seg_pat') || localStorage.getItem('atlas_gh_pat') || '';
 }
 
-function openSeguimiento() {
+function openExcelViewer(key) {
+  const cfg = EXCEL_FILES[key];
+  if (!cfg) return;
+  window._currentExcel = key;
+  const titleEl = document.getElementById('seg-title');
+  if (titleEl) titleEl.textContent = cfg.title;
   document.getElementById('seg-overlay').classList.add('open');
-  if (!window._segWb) loadExcel();
+  if (window._excelCache[key]) {
+    window._segWb = window._excelCache[key];
+    renderSegTabs();
+    renderSegSheet(window._segWb.SheetNames[0]);
+    document.getElementById('seg-loading').style.display = 'none';
+    document.getElementById('seg-table').style.display = 'block';
+  } else {
+    document.getElementById('seg-tabs-bar').innerHTML = '';
+    document.getElementById('seg-table').style.display = 'none';
+    document.getElementById('seg-updated').textContent = '';
+    document.getElementById('seg-loading').textContent = 'Cargando…';
+    document.getElementById('seg-loading').style.display = 'block';
+    loadExcel(cfg, key);
+  }
 }
+function openSeguimiento() { openExcelViewer('seguimiento'); }
 function closeSeguimiento() {
   document.getElementById('seg-overlay').classList.remove('open');
 }
 function reloadExcel() {
+  const key = window._currentExcel;
+  if (!key) return;
+  delete window._excelCache[key];
   window._segWb = null;
+  document.getElementById('seg-tabs-bar').innerHTML = '';
+  document.getElementById('seg-table').style.display = 'none';
+  document.getElementById('seg-updated').textContent = '';
   document.getElementById('seg-loading').textContent = 'Cargando…';
   document.getElementById('seg-loading').style.display = 'block';
-  document.getElementById('seg-table').style.display = 'none';
-  document.getElementById('seg-tabs-bar').innerHTML = '';
-  document.getElementById('seg-updated').textContent = '';
-  loadExcel();
+  loadExcel(EXCEL_FILES[key], key);
 }
 
-async function loadExcel() {
+async function loadExcel(cfg, key) {
   const pat = getSegPAT();
   const loadEl = document.getElementById('seg-loading');
   if (!pat) {
     loadEl.innerHTML = '⚠ Sin token configurado.<br><small>Guarda un token en <strong>⚙ Ajustes</strong> con acceso al repositorio premium-selling.</small>';
     return;
   }
-  loadEl.textContent = 'Descargando desde GitHub…';
-  loadEl.style.display = 'block';
-  document.getElementById('seg-table').style.display = 'none';
   try {
-    // Get file metadata (SHA + commit date)
+    // Commit date
     const metaRes = await fetch(
-      `https://api.github.com/repos/${SEG_REPO}/commits?path=${SEG_FILE}&per_page=1`,
+      `https://api.github.com/repos/${cfg.repo}/commits?path=${cfg.file}&per_page=1`,
       { headers: { 'Authorization': `token ${pat}` } }
     );
     if (metaRes.ok) {
@@ -1025,17 +1066,19 @@ async function loadExcel() {
           'Actualizado ' + d.toLocaleDateString('es-ES', {day:'2-digit',month:'short',year:'numeric'});
       }
     }
-    // Download raw file
+    // Raw file
     loadEl.textContent = 'Procesando fichero…';
     const fileRes = await fetch(
-      `https://api.github.com/repos/${SEG_REPO}/contents/${SEG_FILE}`,
+      `https://api.github.com/repos/${cfg.repo}/contents/${cfg.file}`,
       { headers: { 'Authorization': `token ${pat}`, 'Accept': 'application/vnd.github.v3.raw' } }
     );
     if (!fileRes.ok) throw new Error(`Error ${fileRes.status} — comprueba que el token tiene acceso a premium-selling`);
     const ab = await fileRes.arrayBuffer();
-    window._segWb = XLSX.read(ab, { type: 'array', cellStyles: true, cellNF: true, cellDates: true });
+    const wb = XLSX.read(ab, { type: 'array', cellStyles: true, cellNF: true, cellDates: true });
+    window._excelCache[key] = wb;
+    window._segWb = wb;
     renderSegTabs();
-    renderSegSheet(window._segWb.SheetNames[0]);
+    renderSegSheet(wb.SheetNames[0]);
     loadEl.style.display = 'none';
     document.getElementById('seg-table').style.display = 'block';
   } catch(e) {
