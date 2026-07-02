@@ -198,8 +198,9 @@
   #seg-loading{padding:48px 24px;text-align:center;color:var(--text2);font-size:14px;}
   .seg-icon-btn{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;font-size:12.5px;}
   .seg-icon-btn:hover{background:var(--bg3);}
-  .seg-hdr-btn{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:transparent;color:var(--text);cursor:pointer;font-size:12px;flex-shrink:0;}
-  .seg-hdr-btn:hover{background:var(--bg3);}
+  .seg-hdr-btn{flex-shrink:0;border-color:var(--gold);color:var(--gold);}
+  .seg-hdr-btn:hover{background:var(--gold-bg) !important;}
+  .seg-icon-btn{display:flex;align-items:center;gap:6px;}
   .settings-section{margin-bottom:28px;}
   .settings-title{font-family:var(--serif);font-size:16px;font-weight:normal;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
 
@@ -890,19 +891,31 @@ function goSettings() {
 
       <div class="settings-section">
         <h2 class="settings-title">Token Seguimiento (premium-selling)</h2>
-        <div class="notice notice-blue" style="margin-bottom:14px;">
-          Token para leer el fichero Excel de seguimiento de inversiones. Debe tener permiso <strong>Contents: Read</strong> sobre el repositorio <code>premium-selling</code>.<br>
-          Si tu token principal ya tiene acceso a ambos repos, puedes dejarlo en blanco.
-        </div>
+        ` + (() => {
+          const main = localStorage.getItem('atlas_gh_pat')||'';
+          const seg  = localStorage.getItem('atlas_seg_pat')||'';
+          const same = main && seg && main===seg;
+          const onlyMain = main && !seg;
+          let notice = '';
+          if (onlyMain)
+            notice = `<div class="notice notice-blue" style="margin-bottom:14px;">Sin token específico configurado — se usa el token principal como fallback. Si ese ya tiene acceso a <code>premium-selling</code>, no necesitas configurar nada aquí.</div>`;
+          else if (same)
+            notice = `<div class="notice notice-amber" style="margin-bottom:14px;">⚠ El token de seguimiento es igual al token principal. Puedes eliminar el de seguimiento y dejar que use el principal como fallback.</div>`;
+          else if (seg)
+            notice = `<div class="notice notice-blue" style="margin-bottom:14px;">Token independiente configurado — distinto del principal. Debe tener permiso <strong>Contents: Read</strong> sobre <code>premium-selling</code>.</div>`;
+          else
+            notice = `<div class="notice notice-blue" style="margin-bottom:14px;">Sin token configurado. Necesitas uno con permiso <strong>Contents: Read</strong> sobre <code>premium-selling</code>, o asegúrate de que el token principal ya tiene acceso a ese repo.</div>`;
+          return notice;
+        })() + `
         <div class="field">
           <label>PAT premium-selling</label>
-          <input id="seg-pat-input" type="password" placeholder="github_pat_… (opcional)" value="${esc(localStorage.getItem('atlas_seg_pat')||'')}">
+          <input id="seg-pat-input" type="password" placeholder="github_pat_… (dejar vacío para usar el principal)" value="${esc(localStorage.getItem('atlas_seg_pat')||'')}">
         </div>
-        <div style="display:flex;gap:8px;margin-top:4px;">
+        <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;">
           <button class="btn-primary" onclick="saveSegPAT()">Guardar</button>
           ${localStorage.getItem('atlas_seg_pat')?`<button class="btn-danger" onclick="clearSegPAT()">Eliminar</button>`:''}
+          ${localStorage.getItem('atlas_gh_pat')?`<button onclick="copyMainPAT()" title="Copiar el token principal aquí">Copiar del principal</button>`:''}
         </div>
-        ${localStorage.getItem('atlas_seg_pat')?`<p style="font-size:12px;color:var(--green);margin-top:10px;">✓ Token guardado</p>`:''}
       </div>
 
       <div class="settings-section">
@@ -934,6 +947,12 @@ function saveFHKey() {
   const v=document.getElementById('fh-input')?.value.trim();
   if (!v){toast('Introduce una API key.');return;}
   saveFinnhubKey(v); toast('Clave Finnhub guardada ✓'); goSettings();
+}
+function copyMainPAT() {
+  const main = localStorage.getItem('atlas_gh_pat')||'';
+  if (!main) return;
+  const inp = document.getElementById('seg-pat-input');
+  if (inp) { inp.type='text'; inp.value=main; setTimeout(()=>inp.type='password',2000); toast('Token principal copiado — guarda para confirmar'); }
 }
 function saveSegPAT() {
   const v=document.getElementById('seg-pat-input')?.value.trim();
@@ -1017,7 +1036,7 @@ async function loadExcel() {
     );
     if (!fileRes.ok) throw new Error(`Error ${fileRes.status} — comprueba que el token tiene acceso a premium-selling`);
     const ab = await fileRes.arrayBuffer();
-    window._segWb = XLSX.read(ab, { type: 'array' });
+    window._segWb = XLSX.read(ab, { type: 'array', cellStyles: true, cellNF: true, cellDates: true });
     renderSegTabs();
     renderSegSheet(window._segWb.SheetNames[0]);
     loadEl.style.display = 'none';
@@ -1043,7 +1062,75 @@ function renderSegSheet(name) {
   document.querySelectorAll('.seg-tab').forEach(b =>
     b.classList.toggle('active', b.textContent === name));
   const ws = window._segWb.Sheets[name];
-  const html = XLSX.utils.sheet_to_html(ws, { editable: false, id: 'seg-tbl' });
+  if (!ws || !ws['!ref']) {
+    document.getElementById('seg-table').innerHTML = '<p style="padding:24px;color:var(--text2)">Hoja vacía</p>';
+    return;
+  }
+  const range = XLSX.utils.decode_range(ws['!ref']);
+  const cols   = ws['!cols']   || [];
+  const rows   = ws['!rows']   || [];
+  const merges = ws['!merges'] || [];
+
+  // Build merge lookup: key "r,c" → { rowspan, colspan } for origin; null for covered
+  const mmap = {};
+  merges.forEach(m => {
+    for (let r = m.s.r; r <= m.e.r; r++) {
+      for (let cc = m.s.c; cc <= m.e.c; cc++) {
+        mmap[r+','+cc] = (r===m.s.r && cc===m.s.c)
+          ? { rowspan: m.e.r-m.s.r+1, colspan: m.e.c-m.s.c+1 }
+          : null; // covered — skip
+      }
+    }
+  });
+
+  function hexColor(argb) {
+    if (!argb || argb==='00000000' || argb==='FFFFFFFF' || argb==='FF000000') return null;
+    const s = argb.length === 8 ? argb.slice(2) : argb;
+    return '#'+s;
+  }
+
+  let html = '<table style="border-collapse:collapse;font-size:12px;min-width:100%;">';
+  for (let R = range.s.r; R <= range.e.r; R++) {
+    const rh = rows[R];
+    html += `<tr${rh?.hpx ? ` style="height:${rh.hpx}px"` : ''}>`;
+    for (let C = range.s.c; C <= range.e.c; C++) {
+      const key = R+','+C;
+      if (key in mmap && mmap[key]===null) continue; // covered by merge
+      const addr = XLSX.utils.encode_cell({r:R,c:C});
+      const cell = ws[addr];
+      const m    = mmap[key];
+      const cw   = cols[C];
+
+      let st = 'border:1px solid var(--border);padding:2px 5px;overflow:hidden;';
+      if (cw?.wch) st += `min-width:${Math.round(cw.wch*7)}px;max-width:${Math.round(cw.wch*7)}px;`;
+
+      if (cell?.s) {
+        const s = cell.s;
+        const fg = s.fgColor ? hexColor(s.fgColor.rgb||s.fgColor.argb) : null;
+        const bg = s.bgColor ? hexColor(s.bgColor.rgb||s.bgColor.argb) : null;
+        if (s.patternType==='solid' && fg) st += `background:${fg};`;
+        else if (bg) st += `background:${bg};`;
+        if (s.font?.bold)            st += 'font-weight:700;';
+        if (s.font?.italic)          st += 'font-style:italic;';
+        if (s.font?.color?.rgb)  { const fc=hexColor(s.font.color.rgb); if(fc) st+=`color:${fc};`; }
+        if (s.font?.color?.argb) { const fc=hexColor(s.font.color.argb); if(fc) st+=`color:${fc};`; }
+        const ha = s.alignment?.horizontal;
+        if (ha && ha!=='general') st += `text-align:${ha};`;
+        if (s.alignment?.vertical==='center') st += 'vertical-align:middle;';
+        if (s.alignment?.wrapText) st += 'white-space:normal;word-wrap:break-word;';
+        else st += 'white-space:nowrap;';
+      } else {
+        st += 'white-space:nowrap;';
+      }
+
+      const val = cell ? String(cell.w!==undefined ? cell.w : (cell.v!==undefined ? cell.v : '')) : '';
+      const safe = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const attrs = m ? ` colspan="${m.colspan}" rowspan="${m.rowspan}"` : '';
+      html += `<td${attrs} style="${st}">${safe}</td>`;
+    }
+    html += '</tr>';
+  }
+  html += '</table>';
   document.getElementById('seg-table').innerHTML = html;
 }
 
