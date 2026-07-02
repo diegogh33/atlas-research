@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ATLAS — Investment Research</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231a1a18'/><polygon points='16,5 27,13 27,27 5,27 5,13' fill='none' stroke='%23e8e8e2' stroke-width='1.6' stroke-linejoin='round'/><rect x='11.5' y='18.5' width='9' height='8.5' fill='%23e0aa4a' rx='0.8'/></svg>">
 <style>
   :root {
@@ -177,6 +178,28 @@
   .notice-green{background:var(--green-bg);color:var(--green);border:1px solid rgba(29,107,62,0.2);}
   /* Settings */
   .settings-wrap{max-width:560px;}
+  /* ── Seguimiento overlay ── */
+  #seg-overlay{display:none;position:fixed;inset:0;z-index:300;background:var(--bg);flex-direction:column;}
+  #seg-overlay.open{display:flex;}
+  #seg-topbar{display:flex;align-items:center;gap:12px;padding:0 16px;height:52px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg);}
+  #seg-topbar .seg-title{font-family:var(--serif);font-size:16px;flex:1;}
+  #seg-topbar .seg-updated{font-size:11px;color:var(--text3);}
+  #seg-tabs-bar{display:flex;gap:4px;padding:8px 12px;overflow-x:auto;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2);}
+  #seg-tabs-bar::-webkit-scrollbar{height:3px;}
+  #seg-tabs-bar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+  .seg-tab{padding:5px 13px;border-radius:6px;cursor:pointer;font-size:12px;color:var(--text2);background:transparent;border:1px solid var(--border2);white-space:nowrap;transition:.15s;}
+  .seg-tab:hover{background:var(--bg3);}
+  .seg-tab.active{background:var(--gold);color:#fff;border-color:var(--gold);}
+  #seg-body{flex:1;overflow:auto;padding:0;}
+  #seg-body table{border-collapse:collapse;font-size:11.5px;min-width:100%;}
+  #seg-body td,#seg-body th{border:1px solid var(--border);padding:3px 7px;white-space:nowrap;color:var(--text);}
+  #seg-body tr:first-child td,#seg-body tr:first-child th{background:var(--bg2);color:var(--text2);font-weight:600;position:sticky;top:0;z-index:1;}
+  #seg-body tr:nth-child(even){background:var(--bg2);}
+  #seg-loading{padding:48px 24px;text-align:center;color:var(--text2);font-size:14px;}
+  .seg-icon-btn{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;font-size:12.5px;}
+  .seg-icon-btn:hover{background:var(--bg3);}
+  .seg-hdr-btn{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:transparent;color:var(--text);cursor:pointer;font-size:12px;flex-shrink:0;}
+  .seg-hdr-btn:hover{background:var(--bg3);}
   .settings-section{margin-bottom:28px;}
   .settings-title{font-family:var(--serif);font-size:16px;font-weight:normal;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
 
@@ -218,11 +241,42 @@
       <span class="logo-name">ATLAS</span>
       <span class="logo-sub">Investment Research</span>
     </a>
-    <div id="header-nav"></div>
+    <div style="display:flex;align-items:center;gap:8px;flex:1;justify-content:flex-end;">
+      <button class="seg-hdr-btn" onclick="openSeguimiento()" title="Ver Excel de seguimiento">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="1" width="14" height="14" rx="2"/>
+          <line x1="1" y1="5.5" x2="15" y2="5.5"/>
+          <line x1="5.5" y1="5.5" x2="5.5" y2="15"/>
+        </svg>
+        Seguimiento
+      </button>
+      <div id="header-nav" style="display:flex;align-items:center;gap:8px;"></div>
+    </div>
   </header>
   <main id="main-content"></main>
 </div>
 <div id="toast"></div>
+
+<!-- ── Seguimiento overlay ── -->
+<div id="seg-overlay">
+  <div id="seg-topbar">
+    <button class="seg-icon-btn" onclick="closeSeguimiento()">← Volver</button>
+    <span class="seg-title">Seguimiento de Inversiones</span>
+    <span id="seg-updated" class="seg-updated"></span>
+    <button class="seg-icon-btn" onclick="reloadExcel()" title="Recargar del repositorio">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <path d="M2 8a6 6 0 1 1 1.5 4"/>
+        <polyline points="2,12 2,8 6,8"/>
+      </svg>
+      Actualizar
+    </button>
+  </div>
+  <div id="seg-tabs-bar"></div>
+  <div id="seg-body">
+    <div id="seg-loading">Cargando…</div>
+    <div id="seg-table" style="display:none"></div>
+  </div>
+</div>
 
 <script>
 // ── CONFIG ────────────────────────────────────────────
@@ -835,6 +889,23 @@ function goSettings() {
       </div>
 
       <div class="settings-section">
+        <h2 class="settings-title">Token Seguimiento (premium-selling)</h2>
+        <div class="notice notice-blue" style="margin-bottom:14px;">
+          Token para leer el fichero Excel de seguimiento de inversiones. Debe tener permiso <strong>Contents: Read</strong> sobre el repositorio <code>premium-selling</code>.<br>
+          Si tu token principal ya tiene acceso a ambos repos, puedes dejarlo en blanco.
+        </div>
+        <div class="field">
+          <label>PAT premium-selling</label>
+          <input id="seg-pat-input" type="password" placeholder="github_pat_… (opcional)" value="${esc(localStorage.getItem('atlas_seg_pat')||'')}">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px;">
+          <button class="btn-primary" onclick="saveSegPAT()">Guardar</button>
+          ${localStorage.getItem('atlas_seg_pat')?`<button class="btn-danger" onclick="clearSegPAT()">Eliminar</button>`:''}
+        </div>
+        ${localStorage.getItem('atlas_seg_pat')?`<p style="font-size:12px;color:var(--green);margin-top:10px;">✓ Token guardado</p>`:''}
+      </div>
+
+      <div class="settings-section">
         <h2 class="settings-title">Formato de análisis</h2>
         <p style="font-size:13px;color:var(--text2);margin-bottom:10px;">Cada fichero <code>.md</code> en <code>analyses/</code> debe incluir esta cabecera:</p>
         <pre style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;font-family:var(--mono);font-size:12px;line-height:1.7;overflow-x:auto;">---
@@ -864,6 +935,13 @@ function saveFHKey() {
   if (!v){toast('Introduce una API key.');return;}
   saveFinnhubKey(v); toast('Clave Finnhub guardada ✓'); goSettings();
 }
+function saveSegPAT() {
+  const v=document.getElementById('seg-pat-input')?.value.trim();
+  localStorage.setItem('atlas_seg_pat', v);
+  toast(v ? 'Token Seguimiento guardado ✓' : 'Token Seguimiento eliminado');
+  goSettings();
+}
+function clearSegPAT() { localStorage.removeItem('atlas_seg_pat'); toast('Token eliminado'); goSettings(); }
 function clearFHKey() { localStorage.removeItem('atlas_finnhub_key'); toast('Clave eliminada'); goSettings(); }
 
 function promptToken() {
@@ -880,6 +958,93 @@ function saveInlinePAT() {
   const v=document.getElementById('inline-pat')?.value.trim();
   if (!v){toast('Introduce un token.');return;}
   saveToken(v); removeModal(); toast('Token guardado. Intenta de nuevo.');
+}
+
+// ── SEGUIMIENTO ──────────────────────────────────────
+const SEG_REPO = 'diegogh33/premium-selling';
+const SEG_FILE = 'seguimiento%20inversiones/Seguimiento_Inversiones_v2_0_2026.xlsm';
+
+function getSegPAT() {
+  return localStorage.getItem('atlas_seg_pat') || localStorage.getItem('atlas_gh_pat') || '';
+}
+
+function openSeguimiento() {
+  document.getElementById('seg-overlay').classList.add('open');
+  if (!window._segWb) loadExcel();
+}
+function closeSeguimiento() {
+  document.getElementById('seg-overlay').classList.remove('open');
+}
+function reloadExcel() {
+  window._segWb = null;
+  document.getElementById('seg-loading').textContent = 'Cargando…';
+  document.getElementById('seg-loading').style.display = 'block';
+  document.getElementById('seg-table').style.display = 'none';
+  document.getElementById('seg-tabs-bar').innerHTML = '';
+  document.getElementById('seg-updated').textContent = '';
+  loadExcel();
+}
+
+async function loadExcel() {
+  const pat = getSegPAT();
+  const loadEl = document.getElementById('seg-loading');
+  if (!pat) {
+    loadEl.innerHTML = '⚠ Sin token configurado.<br><small>Guarda un token en <strong>⚙ Ajustes</strong> con acceso al repositorio premium-selling.</small>';
+    return;
+  }
+  loadEl.textContent = 'Descargando desde GitHub…';
+  loadEl.style.display = 'block';
+  document.getElementById('seg-table').style.display = 'none';
+  try {
+    // Get file metadata (SHA + commit date)
+    const metaRes = await fetch(
+      `https://api.github.com/repos/${SEG_REPO}/commits?path=${SEG_FILE}&per_page=1`,
+      { headers: { 'Authorization': `token ${pat}` } }
+    );
+    if (metaRes.ok) {
+      const meta = await metaRes.json();
+      if (meta[0]?.commit?.committer?.date) {
+        const d = new Date(meta[0].commit.committer.date);
+        document.getElementById('seg-updated').textContent =
+          'Actualizado ' + d.toLocaleDateString('es-ES', {day:'2-digit',month:'short',year:'numeric'});
+      }
+    }
+    // Download raw file
+    loadEl.textContent = 'Procesando fichero…';
+    const fileRes = await fetch(
+      `https://api.github.com/repos/${SEG_REPO}/contents/${SEG_FILE}`,
+      { headers: { 'Authorization': `token ${pat}`, 'Accept': 'application/vnd.github.v3.raw' } }
+    );
+    if (!fileRes.ok) throw new Error(`Error ${fileRes.status} — comprueba que el token tiene acceso a premium-selling`);
+    const ab = await fileRes.arrayBuffer();
+    window._segWb = XLSX.read(ab, { type: 'array' });
+    renderSegTabs();
+    renderSegSheet(window._segWb.SheetNames[0]);
+    loadEl.style.display = 'none';
+    document.getElementById('seg-table').style.display = 'block';
+  } catch(e) {
+    loadEl.innerHTML = `⚠ ${e.message}`;
+  }
+}
+
+function renderSegTabs() {
+  const bar = document.getElementById('seg-tabs-bar');
+  bar.innerHTML = '';
+  window._segWb.SheetNames.forEach(name => {
+    const btn = document.createElement('button');
+    btn.className = 'seg-tab';
+    btn.textContent = name;
+    btn.onclick = () => renderSegSheet(name);
+    bar.appendChild(btn);
+  });
+}
+
+function renderSegSheet(name) {
+  document.querySelectorAll('.seg-tab').forEach(b =>
+    b.classList.toggle('active', b.textContent === name));
+  const ws = window._segWb.Sheets[name];
+  const html = XLSX.utils.sheet_to_html(ws, { editable: false, id: 'seg-tbl' });
+  document.getElementById('seg-table').innerHTML = html;
 }
 
 // ── MARKDOWN ──────────────────────────────────────────
