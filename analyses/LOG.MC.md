@@ -6,6 +6,7 @@ valoracion: seguimiento
 resumen: "Logista es el distribuidor capilar líder del sur de Europa con posición monopolística regulada en Italia e Iberia para tabaco, generando un ROIC sostenido del ~30% y un FCF normalizado de ~315 M€ anuales mientras reduce activamente su dependencia del tabaco (del 71% al 46% de Ventas Económicas en cuatro años). El veredicto es SEGUIMIENTO: negocio de calidad institucional con foso genuino, pero el precio actual (~34 €) cotiza en el extremo superior del rango intrínseco sin margen de seguridad suficiente; entrada óptima a 28–30 €."
 tags: [logistics, tobacco, dividend-growth, moat, regulated-monopoly, spain, ibex35]
 fecha: 2026-07-08
+logo_url: https://s3-symbol-logo.tradingview.com/logista--big.svg
 zona_compra: "≤30 € óptimo · entrada clara <28 € · reconsiderar a 34-37 € si se confirman M&A pharma Italia + recuperación resultado financiero ≥80 M€"
 entrada_max: 30.00
 ---
