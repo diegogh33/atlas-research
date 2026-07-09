@@ -1,13 +1,13 @@
 ---
 ticker: "PG"
 nombre: "The Procter & Gamble Company"
-tipo: "Acción - Consumo Defensivo (Dividend King)"
-valoracion: "SEGUIMIENTO"
+tipo: accion
+valoracion: seguimiento
 resumen: "Foso amplio pero de naturaleza publicitaria/escala (no switching costs estructurales): >20 marcas billonarias, gasto publicitario >$8.000M/año, ROIC 22% vs WACC ~7%. CEO nuevo desde ene-2026 (Jejurikar, primer asiático en 187 años) + restructuración de 7.000 puestos + apuesta de IA ejecutándose simultáneamente en una cultura con tensión de ejecución documentada. 70 años consecutivos de incremento de dividendo. Balance extraordinario (cobertura de intereses 49x, Altman Z 5,57). PER actual ~21x con descuento del 10-24% frente a medias históricas. Riesgo estructural de fondo: erosión lenta del pricing power por marca privada premium — contenida en el ciclo actual (7/10 categorías defendidas) pero no resuelta estructuralmente. Entrada completa solo por debajo de $130-135."
-tags: ["consumo-defensivo", "dividend-king", "DGI", "household-products", "personal-care", "seguimiento", "wide-moat", "restructuracion", "nyse"]
-fecha: "2026-07-09"
+tags: [consumo-defensivo, dividend-king, DGI, household-products, personal-care, seguimiento, wide-moat, restructuracion]
+fecha: 2026-07-09
 zona_compra: "130-150"
-entrada_max: "150"
+entrada_max: 150
 logo_url: "https://s3-symbol-logo.tradingview.com/procter-and-gamble--big.svg"
 price_ticker: "NYSE:PG"
 ---
