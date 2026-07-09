@@ -9,7 +9,6 @@ fecha: 2026-07-09
 zona_compra: "$130–150 · posición completa <$130–135"
 entrada_max: 150.00
 logo_url: "https://s3-symbol-logo.tradingview.com/procter-and-gamble--big.svg"
-price_ticker: "NYSE:PG"
 ---
 
 # The Procter & Gamble Company (NYSE: PG)
