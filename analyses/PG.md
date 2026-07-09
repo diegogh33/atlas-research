@@ -7,7 +7,7 @@ resumen: "Foso amplio pero de naturaleza publicitaria/escala (no switching costs
 tags: [consumo-defensivo, dividend-king, DGI, household-products, personal-care, seguimiento, wide-moat, restructuracion]
 fecha: 2026-07-09
 zona_compra: "130-150"
-entrada_max: 150
+entrada_max: 150.00
 logo_url: "https://s3-symbol-logo.tradingview.com/procter-and-gamble--big.svg"
 price_ticker: "NYSE:PG"
 ---
