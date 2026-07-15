@@ -3,7 +3,7 @@ ticker: ORCL
 nombre: Oracle Corporation
 tipo: accion
 valoracion: seguimiento
-resumen: Oracle es el proveedor histórico de bases de datos empresariales que ha pivotado hacia infraestructura cloud para IA (OCI), con un RPO de $638 mil millones pero un free cash flow que colapsó a -$23.7 mil millones en FY2026 y una rebaja crediticia a BBB- el 9 de julio de 2026. Veredicto: SEGUIMIENTO, sin margen de seguridad al precio actual (~$131-140) frente al escenario de estrés de concentración de cliente (OpenAI ~50% del RPO).
+resumen: "Oracle es el proveedor histórico de bases de datos empresariales que ha pivotado hacia infraestructura cloud para IA (OCI), con un RPO de $638 mil millones pero un free cash flow que colapsó a -$23.7 mil millones en FY2026 y una rebaja crediticia a BBB- el 9 de julio de 2026. Veredicto: SEGUIMIENTO, sin margen de seguridad al precio actual (~$131-140) frente al escenario de estrés de concentración de cliente (OpenAI ~50% del RPO)."
 tags: technology, cloud-infrastructure, enterprise-software, ai, high-leverage
 fecha: 2026-07-14
 zona_compra: "$70–$95 (escenario de estrés) · compra clara <$55–70"
