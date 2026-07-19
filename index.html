@@ -627,10 +627,11 @@ function cardHtml(a) {
 }
 
 // ── DETAIL ────────────────────────────────────────────
-function openDetail(ticker) { selTicker = ticker; showDetail(); }
+function openDetail(ticker) { selTicker = ticker; showDetail(); window.scrollTo(0,0); }
 
 function showDetail(tab) {
   tab = tab||'analysis';
+  window.scrollTo(0,0);
   const a = analyses.find(x=>x.ticker===selTicker);
   if (!a) return goLib();
   const log = logData[a.ticker]||[];
