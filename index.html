@@ -424,7 +424,9 @@ async function loadLog() {
     if (res.ok) {
       const json = await res.json();
       logSha = json.sha;
-      logData = JSON.parse(atob(json.content.replace(/\n/g,'')));
+      const raw   = atob(json.content.replace(/\n/g, ''));
+      const bytes = Uint8Array.from(raw, c => c.charCodeAt(0));
+      logData = JSON.parse(new TextDecoder('utf-8').decode(bytes));
     }
   } catch { logData = {}; logSha = null; }
 }
@@ -1074,7 +1076,7 @@ async function loadExcel(cfg, key) {
     );
     if (!fileRes.ok) throw new Error(`Error ${fileRes.status} — comprueba que el token tiene acceso a premium-selling`);
     const ab = await fileRes.arrayBuffer();
-    const wb = XLSX.read(ab, { type: 'array', cellStyles: true, cellNF: true, cellDates: true });
+    const wb = XLSX.read(ab, { type: 'array', cellStyles: true, cellNF: true, cellDates: true, cellFormula: true });
     window._excelCache[key] = wb;
     window._segWb = wb;
     renderSegTabs();
@@ -1164,7 +1166,15 @@ function renderSegSheet(name) {
         st += 'white-space:nowrap;';
       }
 
-      const val = cell ? String(cell.w!==undefined ? cell.w : (cell.v!==undefined ? cell.v : '')) : '';
+      // Prefer XLSX's own formatter (handles formulas, dates, number formats)
+      // Fallbacks: cell.w (pre-formatted), cell.v (raw), empty
+      let val = '';
+      if (cell) {
+        try { val = XLSX.utils.format_cell(cell) || ''; } catch(_) {}
+        if (val === '' && cell.w !== undefined && cell.w !== null) val = String(cell.w);
+        if (val === '' && cell.v !== undefined && cell.v !== null) val = String(cell.v);
+        if (val === '' && cell.f) val = ''; // formula with no cached result
+      }
       const safe = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
       const attrs = m ? ` colspan="${m.colspan}" rowspan="${m.rowspan}"` : '';
       html += `<td${attrs} style="${st}">${safe}</td>`;
