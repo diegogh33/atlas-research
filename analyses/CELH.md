@@ -3,8 +3,7 @@ ticker: CELH
 nombre: Celsius Holdings, Inc.
 tipo: growth
 valoracion: seguimiento
-resumen: Celsius Holdings es el segundo mayor jugador de bebidas energéticas en EE.UU. (~20% de cuota), tras duplicar sus ingresos en 2025 vía la adquisición de Alani Nu, pero con el margen operativo cayendo del 20% al 5,6% y el 43% de sus ingresos dependiendo de un único socio (PepsiCo, con dos asientos en su Consejo). Veredicto de seguimiento: sin margen de seguridad pleno al precio actual (~29$) frente al peor escenario plausible (15-24$).
-tags: [consumer-staples, beverages, growth, brand-moat, distribution-risk]
+resumen: "Celsius Holdings es el segundo mayor jugador de bebidas energéticas en EE.UU. (~20% de cuota), tras duplicar sus ingresos en 2025 vía la adquisición de Alani Nu, pero con el margen operativo cayendo del 20% al 5,6% y el 43% de sus ingresos dependiendo de un único socio (PepsiCo, con dos asientos en su Consejo). Veredicto de seguimiento: sin margen de seguridad pleno al precio actual (~29$) frente al peor escenario plausible (15-24$)."tags: [consumer-staples, beverages, growth, brand-moat, distribution-risk]
 fecha: 2026-07-19
 zona_compra: "Entrada inicial 20-24$ · posición completa <20$ · caso base 33-48$"
 entrada_max: 24.00
