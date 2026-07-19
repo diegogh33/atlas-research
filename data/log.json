@@ -83,6 +83,20 @@
       "contracts": "1",
       "status": "open",
       "statusComment": ""
+    },
+    {
+      "id": "mrs3l2jt3m2f",
+      "date": "2026-07-10",
+      "type": "trade",
+      "text": "1. ACN — Accenture $120 / Nov\\nPuntos fuertes:\\nPrima/Margen del 70.1% — el mejor ratio del grupo. Break-even de $111.20 respaldado por stress test riguroso: incluso en el escenario de tormenta perfecta (5-8% probabilidad), el valor intrínseco calculado es $112 — prácticamente en el break-even. FCF yield del 14.5% frente a media histórica del 5.2%. La dirección está recomprando a $7.500M (+62% YoY) — la mayor señal de convicción interna posible. Dividendo del 4.75% como suelo de retorno.\\nBanderas rojas:\\nQ4 FY2026 en octubre — earnings dentro del período de la put. Si los bookings de Managed Services vuelven a decepcionar, ACN puede caer otro 10-15%. Este es el riesgo principal y no es menor: el Q3 ya produjo un −18.5% en una sesión. La IA como sustituto de consultoría es una narrativa que el mercado seguirá descontando con volatilidad.\\nVeredicto: SÍ, 1 contrato. Es el candidato más sólido del grupo. Prima/Margen superior, fundamentales verificados, break-even en zona de stress test extremo. El riesgo de octubre es real pero manejable con 1 contrato.",
+      "tradeType": "PUT",
+      "tradeAction": "open",
+      "strike": "120",
+      "expiry": "2026-11-20",
+      "premium": "8.80",
+      "contracts": "1",
+      "status": "open",
+      "statusComment": ""
     }
   ]
 }
