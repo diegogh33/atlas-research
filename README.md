@@ -155,9 +155,7 @@ valoracion: [Mapea el veredicto así:
              NO INVERTIR → bajista
              Posición activa abierta → posicion
              Atractivo pero fuera de zona → neutral]
-resumen: [2 frases máximo. Extrae del Resumen Ejecutivo (sección x.A).
-          Debe incluir: qué hace la empresa, el dato financiero más relevante
-          y el veredicto. Sin jerga innecesaria.]
+resumen: "[2 frases máximo. Extrae del Resumen Ejecutivo (sección x.A). Debe incluir: qué hace la empresa, el dato financiero más relevante y el veredicto. Sin jerga innecesaria. IMPORTANTE: todo el texto debe ir entre comillas dobles, como en este ejemplo — si el texto contiene comillas dobles propias, escápalas como \" en vez de ".]"
 tags: [3-5 tags en inglés: sector, características clave.
        Ej: technology, software, dividend-growth, moat, small-cap]
 fecha: [Fecha de hoy en formato YYYY-MM-DD]
