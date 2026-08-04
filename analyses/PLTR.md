@@ -6,8 +6,8 @@ valoracion: seguimiento
 resumen: "Palantir construye software de integración de datos e IA operativa (Gotham, Foundry, Apollo, AIP) para gobiernos y grandes empresas, con crecimiento del 56% en 2025 y guía del 71% para 2026 tras alcanzar rentabilidad GAAP. Veredicto: SEGUIMIENTO — negocio excepcional sin margen de seguridad al precio actual (~$130), con DCF de caso base en ~$101/acción."
 tags: [technology, software, artificial-intelligence, moat, government-contracts, high-valuation]
 fecha: 2026-07-09
-zona_compra: "Seguimiento activo · seguridad clara <$90 · reevaluar hacia INVERTIR en zona $70-90"
-entrada_max: 90
+zona_compra: "Seguimiento activo · seguridad clara <$98 · reevaluar hacia INVERTIR en zona $75-98"
+entrada_max: 100
 ---
 
 # Palantir Technologies Inc. (NYSE: PLTR)
