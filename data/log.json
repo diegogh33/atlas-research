@@ -84,5 +84,14 @@
       "status": "open",
       "statusComment": ""
     }
+  ],
+  "PLTR": [
+    {
+      "id": "msej3194bx4f",
+      "date": "2026-08-04",
+      "type": "decision",
+      "text": "2026-08-04 — PLTR Q2 2026: beat + guía al alza, veredicto sin cambios (SEGUIMIENTO). Ingresos $1.935M (+6,8% vs consenso), EPS $0,41 (+18% vs consenso), US Commercial acelera a +149% YoY (vs 133% Q1). Guía FY2026 revisada al alza de $7,66B a $8,15-8,16B (+82% YoY) y FCF ajustado a $4,5-4,7B. RPO +103% YoY. Reacción de mercado: +12-15% tras meses de caídas pese a beats — rompe patrón negativo previo. DCF caso base recalculado: $100,83→$109,46/acción (+8,6%). Precio post-rally (~$135-142) amplía la brecha frente al valor intrínseco actualizado, de -22% a aprox. -25/-30%. Zona de entrada actualizada: compra clara $27-30 (antes $25-27), reevaluación INVERTIR $75-98 (antes $70-90). Ningún riesgo de tesis activado; se reduce ligeramente el riesgo de \"modelo de pocas manos\" por diversificación de distribución vía socios técnicos (Rackspace, 9-jul-2026).",
+      "decision": "esperar"
+    }
   ]
 }
