@@ -304,6 +304,7 @@ let analyses   = [];   // parsed from MD files
 let logData    = {};   // { ticker: [entries] }
 let logSha     = null; // GitHub SHA of log.json (needed to update)
 let selTicker  = null;
+let filterCartera = false;
 let logFormState = { type:'note', decision:'esperar', tradeType:'PUT', tradeAction:'open' };
 let statusTargetId = null, selectedStatus = 'open';
 
