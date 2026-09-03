@@ -416,6 +416,7 @@ async function loadAnalyses() {
       filename: f.name,
       logo: meta.logo_url || null,
       priceTicker: meta.price_ticker || null,
+      cartera: meta.cartera === 'true' || meta.cartera === true,
       currentPrice: null,
     };
   }));
@@ -546,6 +547,7 @@ function renderLib() {
   const ft   = document.getElementById('ftype')?.value||'all';
   const fr   = document.getElementById('frating')?.value||'all';
   const f = analyses.filter(a => {
+    if (filterCartera && !a.cartera) return false;
     if (ft!=='all' && a.tipo!==ft) return false;
     if (fr!=='all' && a.valoracion!==fr) return false;
     if (srch) {
@@ -562,6 +564,9 @@ function renderLib() {
       </div>
       <div class="filter-row">
         <input type="text" id="fs" placeholder="Buscar ticker, nombre, tag…" value="${esc(srch)}" oninput="renderLib()">
+        <button onclick="toggleCarteraFilter()" style="flex-shrink:0;${filterCartera?'background:var(--gold);color:#fff;border-color:var(--gold);':''}" title="Mostrar solo posiciones en cartera">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-1px;margin-right:5px;"><path d="M2 3a1 1 0 011-1h10a1 1 0 011 1v1H2V3zm0 3h12v8a1 1 0 01-1 1H3a1 1 0 01-1-1V6zm5 2v4h2V8H7z"/></svg>${filterCartera?'En cartera ✕':'Cartera'}
+        </button>
         <select id="ftype" onchange="renderLib()">
           <option value="all">Todos los tipos</option>
           <option value="accion">Acciones</option><option value="cef">CEFs</option>
@@ -576,12 +581,14 @@ function renderLib() {
         </select>
       </div>
     </div>
-    ${f.length===0 ? emptyState(srch||ft!=='all'||fr!=='all') : grid(f)}
+    ${f.length===0 ? emptyState(srch||ft!=='all'||fr!=='all'||filterCartera) : grid(f)}
   `);
   if (srch) document.getElementById('fs').value=srch;
   if (ft!=='all') document.getElementById('ftype').value=ft;
   if (fr!=='all') document.getElementById('frating').value=fr;
 }
+
+function toggleCarteraFilter() { filterCartera = !filterCartera; renderLib(); }
 
 function emptyState(hasFilter) {
   if (!hasFilter && analyses.length===0) return `
@@ -614,7 +621,10 @@ function cardHtml(a) {
           </div>
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:6px;">
             <p class="name" style="margin:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(a.nombre)}</p>
-            <span class="date" style="flex-shrink:0;">${a.fecha||''}</span>
+            <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;">
+              ${a.cartera?`<span style="font-size:9px;font-weight:700;background:var(--gold);color:#fff;padding:1px 5px;border-radius:3px;letter-spacing:0.06em;text-transform:uppercase;">Cartera</span>`:''}
+              <span class="date">${a.fecha||''}</span>
+            </div>
           </div>
         </div>
       </div>
