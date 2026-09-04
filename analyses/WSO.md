@@ -2,6 +2,7 @@
 ticker: WSO
 nombre: Watsco, Inc.
 tipo: accion
+cartera: true
 valoracion: seguimiento
 resumen: "Watsco es el mayor distribuidor de equipos y piezas de aire acondicionado, calefacción y refrigeración (HVAC/R) de Norteamérica, con un balance sin deuda y 52 años consecutivos de dividendo creciente. Tras el desplome de ~15% del 29/07/2026 (2T26 flojo), cotiza en ~$311, en línea con su valor intrínseco de caso base (~$309) y sin margen de seguridad frente a escenarios adversos — veredicto de SEGUIMIENTO con zona de compra en $250-270."
 tags: [hvac, industrials, distribution, dividend-growth, moat, wide-moat-family-owned]

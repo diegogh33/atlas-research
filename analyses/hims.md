@@ -2,6 +2,7 @@
 ticker: HIMS
 nombre: Hims & Hers Health, Inc.
 tipo: growth
+cartera: true
 valoracion: seguimiento
 resumen: "Plataforma líder de telesalud DTC con 2,5M suscriptores, $2.348M en ingresos (+59% a/a) y primer año de rentabilidad GAAP plena. Modelo de suscripción crónica con márgenes brutos del 74%. En un punto de inflexión triple: regulatorio (post-GLP-1 compuesto), financiero (deuda convertible $870M) y estratégico (tres adquisiciones internacionales simultáneas + Amazon materializado). Margen de seguridad real solo por debajo de $16; precio actual ~$29-30 implica prima sobre el valor central."
 tags: healthcare, telehealth, dtc, subscription, growth, speculative

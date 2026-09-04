@@ -2,6 +2,7 @@
 ticker: MAIN
 nombre: Main Street Capital Corporation
 tipo: cef
+cartera: true
 valoracion: seguimiento
 resumen: La mejor Business Development Company (BDC) del mercado americano, con gestión interna, modelo híbrido deuda+capital en el Lower Middle Market y 18 años de dividendo mensual ininterrumpido. NII yield del 7,6% y dividend yield total del 7,8% por encima de sus medias de 5 años. Sin margen de seguridad institucional al precio actual (~1,61x NAV). Alta convicción a $47–50 (1,40–1,50x NAV).
 tags: bdc, income, dgi, dividend-monthly, lower-middle-market, wide-moat

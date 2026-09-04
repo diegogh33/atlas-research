@@ -2,6 +2,7 @@
 ticker: HSY
 nombre: The Hershey Company
 tipo: accion
+cartera: true
 valoracion: seguimiento
 resumen: "Hershey es el líder de chocolate en Norteamérica (~41-44% cuota EE.UU.), con un moat de marca y distribución sólido, pero 2025 vio el margen bruto desplomarse del 47,3% al 33,5% por el shock histórico de cacao, hundiendo el BPA a $4,34 desde $10,92. Veredicto: SEGUIMIENTO, con zona de entrada objetivo $135-155 mientras se resuelve la incertidumbre sobre GLP-1, la ejecución del nuevo CEO y la recuperación de márgenes prometida para 2026-2027."
 tags: [consumer-staples, food-beverage, dividend-growth, moat, large-cap]

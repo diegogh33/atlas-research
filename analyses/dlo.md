@@ -2,6 +2,7 @@
 ticker: DLO
 nombre: dLocal Limited
 tipo: growth
+cartera: true
 valoracion: invertir
 resumen: "Infraestructura de pagos crítica para merchants globales en 60+ mercados emergentes. Q2 2026: TPV $17,7B (+92% a/a, 7º trim. consecutivo >50%), Revenue $399,7M (+56% a/a, beat +9,6%), Gross Profit $127M récord (+29%), FCF ajustado $69M (+41%, conversión 125%). NRR 153%, TPV Retention 188%. ROE 41,2% en expansión. Guidance revisado al alza: TPV +60-70%, GP +25-30%. ⚠️ Señal crítica activa: Net Take Rate 0,72%, a 2pb del umbral de salida (<0,70%). Riesgo legal Muddy Waters cerrado definitivamente (abril 2026). Caja total $815,6M, deuda neta negativa. Veredicto INVERTIR. Entrada óptima ≤$14,50."
 tags: fintech, payments, emerging-markets, latam, africa, asia, growth, mid-cap

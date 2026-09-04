@@ -2,6 +2,7 @@
 ticker: GIS
 nombre: General Mills, Inc.
 tipo: accion
+cartera: true
 valoracion: seguimiento
 resumen: "El mayor fabricante de alimentos empaquetados de EE.UU. (Cheerios, Pillsbury, Nature Valley, Blue Buffalo) atraviesa erosión estructural: marca blanca, GLP-1 y BPA en tendencia descendente (FY2026E $3.44, FY2027E $3.33). FCF yield del 9-12% y dividend yield del 7% con 98 años de pagos ininterrumpidos. Valor ponderado ~$35 ≈ precio actual. Sin margen de seguridad suficiente para INVERTIR."
 tags: consumer-staples, packaged-foods, dividend-growth, dgi, wide-moat

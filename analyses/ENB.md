@@ -2,6 +2,7 @@
 ticker: ENB
 nombre: Enbridge Inc.
 tipo: accion
+cartera: true
 valoracion: seguimiento
 resumen: "Enbridge es el mayor operador de infraestructura energética de Norteamérica (oleoductos, gasoductos, distribución de gas y renovables), con el 98% de su EBITDA respaldado por contratos take-or-pay o retornos regulados. El precio actual (~$51 USD) se sitúa dentro del rango de valor intrínseco pero sin margen de seguridad frente al litigio activo de Line 5 y al apalancamiento en el extremo superior de su rango objetivo, de ahí el veredicto de SEGUIMIENTO."
 tags: [energy-infrastructure, midstream, dividend-aristocrat, regulated-utility, pipeline]

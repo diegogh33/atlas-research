@@ -2,6 +2,7 @@
 ticker: ITW
 nombre: Illinois Tool Works Inc.
 tipo: accion
+cartera: true
 valoracion: seguimiento
 resumen: "Conglomerado industrial centenario con el moat operativo mejor documentado del sector (sistema 80/20, ROIC ~29%, margen operativo 10pp por encima del peer group). Balance muy conservador (Deuda/EBITDA 1,9x) y Dividend King de 63 años. Pero el crecimiento orgánico 4%+ prometido por el 'Next Phase' lleva una década sin materializarse, y el precio actual (~$250-280) ya lo da por hecho: DCF arroja $172-194 frente a un mercado que paga 26x beneficios. Calidad excepcional, precio de entrada sin margen de seguridad."
 tags: industrials, dividend-growth, dgi, dividend-king, wide-moat, diversified-industrial

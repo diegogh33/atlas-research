@@ -2,6 +2,7 @@
 ticker: BAM
 nombre: Brookfield Asset Management Ltd.
 tipo: accion
+cartera: true
 valoracion: alcista
 resumen: "Gestora de activos alternativos pure-play escindida de Brookfield Corporation en dic. 2022, con >$1 billón de AUM en infraestructura, crédito, private equity y real estate. FRE de $3.000M (+22%) con margen del 58%, 88% del capital permanente o largo plazo. Retorno total esperado ~50% en 18-24 meses más dividend yield del 4,7%. Veredicto INVERTIR."
 tags: asset-management, alternatives, infrastructure, credit, private-equity, wide-moat

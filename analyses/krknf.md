@@ -2,6 +2,7 @@
 ticker: KRKNF
 nombre: Kraken Robotics Inc.
 tipo: growth
+cartera: true
 valoracion: seguimiento
 resumen: "Empresa canadiense líder en robótica submarina de defensa: baterías SeaPower certificadas sole-source para la US Navy y SAS/KATFISH para cartografía submarina OTAN. La adquisición de Covelya (615 M CAD, mar. 2026) transforma el foso de estrecho a amplio pero eleva el riesgo de ejecución a riesgo dominante. Cotiza en OTC (USD) como KRKNF. Financieros en CAD."
 tags: defense, subsea, robotics, canada, small-cap, speculative

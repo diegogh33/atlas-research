@@ -2,6 +2,7 @@
 ticker: IIPR
 nombre: Innovative Industrial Properties, Inc.
 tipo: accion
+cartera: true
 valoracion: seguimiento
 resumen: "REIT pionero que financia mediante sale-leaseback a operadores de cannabis medicinal con licencia estatal en EE.UU., diversificando ahora hacia ciencias de la vida vía IQHQ; tras año y medio de impagos recurrentes de inquilinos que ya provocaron la primera caída de ingresos de su historia (-13,8% en 2025) y un dividendo no cubierto por el AFFO del último trimestre, el precio actual (~56-59$) coincide casi exactamente con el valor intrínseco bajo un escenario de estrés plausible, por lo que el veredicto es de SEGUIMIENTO, no de compra."
 tags: [reit, cannabis, net-lease, high-yield, small-cap, turnaround]

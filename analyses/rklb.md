@@ -2,6 +2,7 @@
 ticker: RKLB
 nombre: Rocket Lab USA, Inc.
 tipo: growth
+cartera: true
 valoracion: seguimiento
 resumen: "Empresa espacial end-to-end en transformación estructural acelerada. Q2 2026: $234M ingresos (+62% a/a), EBITDA adj. -$8,8M (vs. guidance -$20-26M), backlog $2.360M (+137% a/a). Contratos post-Q2: $1.000M+, incluyendo Flatellite $397M DoD, HASTE $266M Space Force (récord histórico) y primer contrato GEO ($160M). Neutron: primer vuelo desplazado a H1 2027. Caja $2.400M. Veredicto SEGUIMIENTO: negocio excepcional, precio sin margen de seguridad. Entrada defensiva <$50."
 tags: space, defense, launch-services, growth, speculative, large-cap, constellation

@@ -2,6 +2,7 @@
 ticker: TSLA
 nombre: Tesla, Inc.
 tipo: accion
+cartera: true
 valoracion: seguimiento
 resumen: "Tesla fabrica vehículos eléctricos y sistemas de energía, pero su ROIC (3,9-6,1%) ya cotiza por debajo de su WACC (~14-16%) mientras el 85% de su valor de empresa depende de que Robotaxi y Optimus escalen a tiempo. Veredicto: SEGUIMIENTO, con compra clara solo en el rango $80-150 o ante evidencia sostenida de escalado real de la autonomía."
 tags: [electric-vehicles, ai-robotics, energy-storage, growth, key-person-risk]

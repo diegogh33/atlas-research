@@ -2,6 +2,7 @@
 ticker: MC.PA
 nombre: LVMH Moët Hennessy – Louis Vuitton
 tipo: accion
+cartera: true
 valoracion: alcista
 resumen: El mayor grupo de lujo del mundo con 6 divisiones, 75+ maisons y ~25% del mercado global de lujo personal (~€363Bn). Corrección cíclica sitúa el FCF yield en 6,3% (máximo histórico) y el PER en ~20x sobre BPA deprimido — el nivel más bajo desde 2016. Precio objetivo €620–700 en 3 años, €700–850 en 5 años. Veredicto INVERTIR.
 tags: luxury, consumer-discretionary, europe, wide-moat, dividend, dgi

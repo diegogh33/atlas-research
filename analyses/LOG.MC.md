@@ -2,6 +2,7 @@
 ticker: LOG.MC
 nombre: Logista Integral, S.A.
 tipo: accion
+cartera: true
 valoracion: seguimiento
 resumen: "Logista es el distribuidor capilar líder del sur de Europa con posición monopolística regulada en Italia e Iberia para tabaco, generando un ROIC sostenido del ~30% y un FCF normalizado de ~315 M€ anuales mientras reduce activamente su dependencia del tabaco (del 71% al 46% de Ventas Económicas en cuatro años). El veredicto es SEGUIMIENTO: negocio de calidad institucional con foso genuino, pero el precio actual (~34 €) cotiza en el extremo superior del rango intrínseco sin margen de seguridad suficiente; entrada óptima a 28–30 €."
 tags: [logistics, tobacco, dividend-growth, moat, regulated-monopoly, spain, ibex35]

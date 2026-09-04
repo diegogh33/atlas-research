@@ -2,6 +2,7 @@
 ticker: ZTS
 nombre: Zoetis Inc.
 tipo: accion
+cartera: true
 valoracion: alcista
 resumen: Zoetis es el líder global en salud animal (~13-14% cuota de mercado), con un portfolio de medicamentos, vacunas y diagnóstico para mascotas y ganadería construido sobre un ROIC del 24% y un foso competitivo amplio. Tras una corrección del 64% desde máximos por presión competitiva en dermatología, la señal de seguridad de Librela y debilidad macro, cotiza a mínimos históricos de valoración (PER ajustado ~12x vs. media 10A de 33x) — veredicto INVERTIR con entrada escalonada.
 tags: [animal-health, pharma, dividend-growth, wide-moat, large-cap]
