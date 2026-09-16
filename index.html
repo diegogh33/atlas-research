@@ -185,6 +185,28 @@
   .notice-green{background:var(--green-bg);color:var(--green);border:1px solid rgba(29,107,62,0.2);}
   /* Settings */
   .settings-wrap{max-width:560px;}
+  /* ── Operations view ── */
+  .ops-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;}
+  .ops-title{font-family:var(--serif);font-size:22px;font-weight:normal;}
+  .ops-meta{font-size:13px;color:var(--text3);}
+  .ops-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .ops-table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);}
+  .ops-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .ops-table th{text-align:left;padding:9px 12px;border-bottom:2px solid var(--border);color:var(--text2);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap;background:var(--bg2);}
+  .ops-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle;white-space:nowrap;}
+  .ops-table tr:last-child td{border-bottom:none;}
+  .ops-table tr:hover td{background:var(--bg2);cursor:pointer;}
+  .ops-ticker-btn{font-weight:700;font-family:var(--mono);color:var(--accent);background:none;border:none;padding:0;cursor:pointer;font-size:13px;}
+  .ops-ticker-btn:hover{text-decoration:underline;}
+  .ops-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;letter-spacing:0.03em;}
+  .ops-badge-open{background:rgba(72,199,142,.15);color:#48c78e;}
+  .ops-badge-closed{background:var(--bg3);color:var(--text3);}
+  .ops-badge-rolled{background:rgba(224,170,74,.15);color:var(--gold);}
+  .ops-badge-assigned{background:rgba(220,80,80,.15);color:#dc5050;}
+  .ops-dte-ok{color:#48c78e;}
+  .ops-dte-warn{color:var(--gold);}
+  .ops-dte-urgent{color:#dc5050;font-weight:700;}
+  .ops-empty{text-align:center;padding:60px 20px;color:var(--text3);}
   /* ── Seguimiento overlay ── */
   #seg-overlay{display:none;position:fixed;inset:0;z-index:300;background:var(--bg);flex-direction:column;}
   #seg-overlay.open{display:flex;}
@@ -247,6 +269,13 @@
       <span class="logo-sub">Investment Research</span>
     </a>
     <div style="display:flex;align-items:center;gap:8px;flex:1;justify-content:flex-end;">
+      <button class="seg-hdr-btn" onclick="showOperaciones()" title="Ver todas las operaciones de opciones">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="1,12 5,7 9,10 15,3"/>
+          <polyline points="11,3 15,3 15,7"/>
+        </svg>
+        Operaciones
+      </button>
       <button class="seg-hdr-btn" onclick="openExcelViewer('seguimiento')" title="Ver Excel de seguimiento">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="1" y="1" width="14" height="14" rx="2"/>
@@ -305,6 +334,7 @@ let logData    = {};   // { ticker: [entries] }
 let logSha     = null; // GitHub SHA of log.json (needed to update)
 let selTicker  = null;
 let filterCartera = false;
+let showClosedOps  = false;
 let logFormState = { type:'note', decision:'esperar', tradeType:'PUT', tradeAction:'open' };
 let statusTargetId = null, selectedStatus = 'open';
 
@@ -590,6 +620,94 @@ function renderLib() {
 }
 
 function toggleCarteraFilter() { filterCartera = !filterCartera; renderLib(); }
+
+function showOperaciones() {
+  showClosedOps = false;
+  setNav(`<button onclick="goLib()">← Biblioteca</button><button onclick="init()">↺ Recargar</button>`);
+  renderOpsView();
+}
+
+function renderOpsView() {
+  // Collect all trade entries across all tickers
+  const all = [];
+  for (const ticker in logData) {
+    for (const e of (logData[ticker]||[])) {
+      if (e.type === 'trade') all.push({ ...e, ticker });
+    }
+  }
+  // Sort by date descending (most recent first)
+  all.sort((a, b) => (b.date||'').localeCompare(a.date||''));
+
+  const open   = all.filter(e => e.status === 'open');
+  const closed = all.filter(e => e.status !== 'open');
+  const shown  = showClosedOps ? all : open;
+
+  function dte(expiryStr) {
+    if (!expiryStr) return null;
+    const diff = Math.round((new Date(expiryStr) - new Date()) / 86400000);
+    return diff;
+  }
+  function dteCls(d) {
+    if (d === null) return '';
+    if (d <= 14) return 'ops-dte-urgent';
+    if (d <= 30) return 'ops-dte-warn';
+    return 'ops-dte-ok';
+  }
+  function statusBadge(st) {
+    const map = { open:'open', closed:'closed', rolled:'rolled', assigned:'assigned' };
+    const cls = 'ops-badge ops-badge-' + (map[st]||'closed');
+    return `<span class="${cls}">${ST_LABELS[st]||st}</span>`;
+  }
+
+  const rows = shown.length === 0
+    ? `<tr><td colspan="9" class="ops-empty">${showClosedOps ? 'No hay operaciones registradas.' : 'No hay operaciones abiertas.'}</td></tr>`
+    : shown.map(e => {
+        const d = dte(e.expiry);
+        const dteTxt = e.status==='open' && d!==null
+          ? `<span class="${dteCls(d)}">${d}d</span>`
+          : (e.expiry||'—');
+        return `<tr onclick="openDetail('${e.ticker}')">
+          <td><button class="ops-ticker-btn" onclick="event.stopPropagation();openDetail('${e.ticker}')">${esc(e.ticker)}</button></td>
+          <td><strong>${esc(e.tradeType||'—')}</strong></td>
+          <td>${e.strike ? `<strong>$${esc(e.strike)}</strong>` : '—'}</td>
+          <td>${e.expiry ? new Date(e.expiry+'T12:00:00').toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'numeric'}) : '—'}</td>
+          <td>${dteTxt}</td>
+          <td>${e.premium ? `$${esc(e.premium)}` : '—'}</td>
+          <td>${e.contracts||'—'}</td>
+          <td>${statusBadge(e.status)}</td>
+          <td style="color:var(--text3);font-size:12px;">${e.date||'—'}</td>
+        </tr>`;
+      }).join('');
+
+  const toggleBtn = `<button onclick="showClosedOps=!showClosedOps;renderOpsView()"
+    style="${showClosedOps?'background:var(--bg3);':''}">
+    ${showClosedOps ? 'Ocultar cerradas' : `Mostrar cerradas ${closed.length?`(${closed.length})`:''}` }
+  </button>`;
+
+  setMain(`
+    <div class="ops-header">
+      <div>
+        <h1 class="ops-title">Operaciones con Opciones</h1>
+        <p class="ops-meta">${open.length} abiertas · ${closed.length} cerradas/roladas/asignadas</p>
+      </div>
+      <div class="ops-controls">
+        ${toggleBtn}
+      </div>
+    </div>
+    <div class="ops-table-wrap">
+      <table class="ops-table">
+        <thead>
+          <tr>
+            <th>Ticker</th><th>Tipo</th><th>Strike</th>
+            <th>Vencimiento</th><th>DTE</th><th>Prima</th>
+            <th>Contratos</th><th>Estado</th><th>Entrada</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `);
+}
 
 function emptyState(hasFilter) {
   if (!hasFilter && analyses.length===0) return `
