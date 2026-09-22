@@ -6,7 +6,7 @@ valoracion: seguimiento
 resumen: "Líder global del oligopolio de música grabada (~31-34% cuota) con catálogo centenario irreplicable y pricing power probado (Streaming 2.0, TikTok), pero con riesgos de gobernanza serios: retribución del CEO cuestionada, participación accionarial del CEO ~0,04%, control familiar Bolloré/Vivendi (~28%) que bloqueó la oferta de Pershing Square, y conflicto de interés estructural entre Lucian Grainge (CEO de UMG) y su hijo Elliot Grainge (CEO de Atlantic Music Group, Warner). DCF base €21,9-27,5/acción; escenario de estrés combinado €9,5-13,0/acción."
 tags: [media, música, streaming, IA, oligopolio, catálogo, gobernanza, Big-Three, Euronext]
 fecha: 2026-09-22
-logo_url: https://s3-symbol-logo.tradingview.com/universal-music-group--600.png
+logo_url: https://upload.wikimedia.org/wikipedia/commons/c/c4/Universal_Music_Group_logo.svg
 zona_compra: "9.5-18"
 entrada_max: 18
 price_ticker: UMG.AS
