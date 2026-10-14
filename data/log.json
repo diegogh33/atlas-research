@@ -145,7 +145,7 @@
       "premium": "2.20",
       "contracts": "3",
       "status": "open",
-      "statusComment": ""
+      "statusComment": "El strike correcto es el $42,50.\n\nEntrada efectiva si asignado: ~$40,28 — un 9,3% por debajo del precio actual, con OI de 5.186 (el único strike con mercado real en esta cadena).\nPrima cobrada realista: $2,10–2,15 ejecutando con límite en el mid. No toques el bid — es demasiado conservador. Orden limitada a $2,15 o $2,20 y paciencia.\nDelta -0,342: probabilidad de asignación ~34%. Hay opciones reales tanto de que te asignen como de que no.\nA $40,28 efectivo estás comprando BAM a ~21,5× LTM FRE, bien por encima del suelo de estrés severo de $27–35 y en un precio que cualquier análisis del modelo justifica con amplitud.\n\nEl $40 también es defendible si quieres una entrada aún más profunda (~$38,75 efectivo), pero la prima magra ($1,25 bid) y el spread del 18% hacen que la ejecución sea peor. Dado que el objetivo es acumular a precio razonable y no llegar al suelo de estrés, el $42,50 es el equilibrio correcto."
     }
   ]
 }
