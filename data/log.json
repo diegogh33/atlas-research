@@ -126,5 +126,12 @@
       "decision": "esperar"
     }
   ],
-  "BAM": []
+  "BAM": [
+    {
+      "id": "mv83paif50kj",
+      "date": "2026-09-25",
+      "type": "note",
+      "text": "2026-09-25 | ACTUALIZACIÓN | Q2 2026 récord: FRE $808M (+20% YoY), fundraising $77B en el trimestre ($98B YTD), FBC $672B (+19% LTM). Bloom Energy ×5 → $25B (jul). Stake AREP/PowerHouse (8GW pipeline, sep). Oaktree 100% en cierre Q4. Buybacks $575M YTD a ~$46/acc. Tesis confirmada y acelerada. Precio actual ~$47, zona de entrada.\nPróximo trigger: Q3 earnings ~nov 5."
+    }
+  ]
 }
