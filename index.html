@@ -552,8 +552,10 @@ async function init() {
   setMain(`<div class="loading-row"><div class="spinner"></div><span>Cargando análisis desde GitHub…</span></div>`);
   try {
     await Promise.all([loadAnalyses(), loadLog()]);
-    await loadMarketData();
-    goLib();
+    goLib(); // Show library immediately
+    loadMarketData().then(() => {
+      if (document.querySelector('.analyses-grid')) renderLib();
+    });
   } catch(e) {
     setMain(`
       <div class="empty">
