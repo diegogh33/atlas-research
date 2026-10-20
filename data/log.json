@@ -99,6 +99,12 @@
       "contracts": "10",
       "status": "open",
       "statusComment": ""
+    },
+    {
+      "id": "mvglvl49wvas",
+      "date": "2026-10-20",
+      "type": "note",
+      "text": "[2026-10-18] EVENTO MATERIAL — Neutron: séptimo retraso oficial a 2027.\n\nCausa raíz: Voids (microporos) entre capas de fibra de carbono en el forward dome del tanque Stage 1 AFP, detectados en inspección post-curado. Las secciones gruesas del dome son especialmente sensibles al proceso AFP. Beck confirmó que los voids no habrían causado fallo catastrófico, pero la empresa no vuela sin margen de seguridad completo.\n\nEstado del programa: · Causa raíz identificada y reproducida en laboratorio ✓ · Proceso de fabricación corregido ✓ · Aft dome producido con proceso nuevo — \"mayor calidad hasta la fecha\" (Beck) ✓ · Forward dome en fabricación con proceso corregido — pendiente de inspección ultrasónica · Tras inspección: ensamblaje Stage 1 completo → tests hidrostático y criogénico · Rocket Lab no dará nueva fecha hasta superar la inspección · Timeline realista implícito: forward dome listo Q1 2027 · primer vuelo Q2-Q3 2027\n\nReacción del mercado: · Cierre pre-anuncio (14 oct): $59,18 · After-hours: ~$54,60 (-7,7%) · Intraday mínimo (15 oct): $49,69 (-16%) · Cierre (15 oct): $55,25 (-6,6%) · Cierre (16 oct): $50,84 (-7,98%) · Precio actual (18 oct): $50,95 · Caída acumulada desde ATH ($151): -66% · Caída desde compra 50 acc. ($73,47): -30,7%\n\nNegocio base — sin cambios materiales: · 25-sep: Synspective 20 lanzamientos (mayor contrato comercial Electron de la historia) · Misión 97 exitosa (24-sep) · Backlog y contratos DoD (SDA, HASTE, Flatellite) intactos\n\nImpacto sobre posiciones: · Sintético $22 Jan'27 ×2: sin cambio — toma de acciones en enero según lo previsto · 50 acc. a $73,47: pérdida latente ~$1.125 · mantener con tesis intacta · BPS $55/$45 Jan'27 ×10: strike vendido ($55) ahora ITM ~$4 · breakeven $52,20 rozado · revisar según evolución pre-earnings Q3 (16-nov)\n\nSeñales de alerta del .md: · ⚠️ Nivel de alerta $58 superado a la baja → revisión activa · Condición NO INVERTIR (\"primer vuelo >2027\") rozada pero NO activada — retraso es a 2027, no más allá · Precio actual ($50,95) entra en zona de entrada defensiva del .md (objetivo <$50)\n\nVeredicto: SEGUIMIENTO — sin cambio. Convicción baja de Media-Alta a Media por patrón de dos defectos consecutivos en Stage 1. Negocio base intacto. Valor del negocio sin Neutron no ha variado.\n\nPróximo catalizador: Earnings Q3 2026 — 16 noviembre 2026."
     }
   ],
   "ACN": [
