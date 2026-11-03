@@ -153,5 +153,13 @@
       "status": "open",
       "statusComment": "El strike correcto es el $42,50.\n\nEntrada efectiva si asignado: ~$40,28 — un 9,3% por debajo del precio actual, con OI de 5.186 (el único strike con mercado real en esta cadena).\nPrima cobrada realista: $2,10–2,15 ejecutando con límite en el mid. No toques el bid — es demasiado conservador. Orden limitada a $2,15 o $2,20 y paciencia.\nDelta -0,342: probabilidad de asignación ~34%. Hay opciones reales tanto de que te asignen como de que no.\nA $40,28 efectivo estás comprando BAM a ~21,5× LTM FRE, bien por encima del suelo de estrés severo de $27–35 y en un precio que cualquier análisis del modelo justifica con amplitud.\n\nEl $40 también es defendible si quieres una entrada aún más profunda (~$38,75 efectivo), pero la prima magra ($1,25 bid) y el spread del 18% hacen que la ejecución sea peor. Dado que el objetivo es acumular a precio razonable y no llegar al suelo de estrés, el $42,50 es el equilibrio correcto."
     }
+  ],
+  "IIPR": [
+    {
+      "id": "mw0ja4jfofw5",
+      "date": "2026-11-03",
+      "type": "note",
+      "text": "Título: Q3 2026 — beat nominal de AFFO, balance más ajustado; SEGUIMIENTO sin cambios\n\nResultados (2-nov, tras cierre): ingresos 64,9 M$ (miss ~5% vs consenso), AFFO 1,96$/acc (+7% QoQ), payout 97% (primer trimestre <100% desde el Q3'25). El 21% del AFFO (0,41$/acc) procede de pagos y depósitos aplicados de inquilinos en default; sin ellos el AFFO sería ~1,55$ y el payout ~123%. La mejora por acción es sobre todo efecto recompra.\n\nBalance y cartera: % arrendado 90,0% (vs 95,8% en Q2), ND/EBITDA 2,1x (vs 1,7x), cobertura de intereses 5,7x (vs >15x), liquidez 142 M$ (vs 300 M$) con ambas revolving dispuestas al 100%; la de 87,5 M$ se extendió solo hasta el 21-ene-2027. IQHQ ya es el 20,8% de la renta base + intereses (mezzanine Alewife de 245 M$, 134 M$ aún por desembolsar). Los flujos operativos de los 9M cubren el 89% de los dividendos pagados.\n\nImpacto: veredicto SEGUIMIENTO y zona de entrada ≤45–48$ (entrada_max 48) sin cambios. Valor intrínseco estimado: DCF base 77$ → ~70–75$; estrés 57$ → ~50–55$. A 54,40$ sigue sin haber margen de seguridad. Convicción Baja-Media, bajando levemente. Corrección: el payout fue >100% los cuatro trimestres previos (111/101/101/104%); el Q2 no fue el primero. Pendiente: call de hoy 18:00 Madrid y 10-Q; regenerar el .md después."
+    }
   ]
 }
